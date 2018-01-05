@@ -12,69 +12,137 @@ package reversi;
 public class Board {
     private static final int DEFAULT_SIZE = 8;
     
-    private Cell[][] theBoard;
-    private final int boardSize;
-    private int xCount;
-    private int oCount;
+    private Cell[][] _theBoard;
+    private final int _boardSize;
+    private int _xCount;
+    private int _oCount;
     
+    /**
+     * Creating a Board object
+     * with the default size (8)
+     */
     public Board() {
-        boardSize = DEFAULT_SIZE;
-        theBoard = new Cell[boardSize][boardSize];
+        _boardSize = DEFAULT_SIZE;
+        _theBoard = new Cell[_boardSize][_boardSize];
     }
     
+    /**
+     * Creating a Board object
+     * with the specified size
+     * @param size the size of the board
+     */
     public Board(int size) {
-        boardSize = size;
-        theBoard = new Cell[boardSize][boardSize];
+        _boardSize = size;
+        _theBoard = new Cell[_boardSize][_boardSize];
     }
     
+    /**
+     * Copy constructor
+     * @param b the board to copy
+     */
     public Board(Board b) {
-        boardSize = b.boardSize;
-        theBoard = new Cell[boardSize][boardSize];
+        _boardSize = b._boardSize;
+        _theBoard = new Cell[_boardSize][_boardSize];
         
-        for (int outerIndex = 0; outerIndex < boardSize; outerIndex++) {
-            for (int innerIndex = 0; innerIndex < boardSize; innerIndex++) {
-                theBoard[outerIndex][innerIndex] = b.theBoard[outerIndex][innerIndex];
+        for (int outerIndex = 0; outerIndex < _boardSize; outerIndex++) {
+            for (int innerIndex = 0; innerIndex < _boardSize; innerIndex++) {
+                _theBoard[outerIndex][innerIndex] = b._theBoard[outerIndex][innerIndex];
             }
         }
     }
     
+    /**
+     * Returning the size of the board
+     * @return the size of the board
+     */
     public int getBoardSize() {
-        return boardSize;
+        return _boardSize;
     }
     
+    /**
+     * Returning the number of X
+     * cells in the board
+     * @return the number of x cells
+     */
     public int getXCount() {
-        return xCount;
+        return _xCount;
     }
     
+    /**
+     * Returning the number of o
+     * cells in the board
+     * @return the number of o cells
+     */
     public int getOCount() {
-        return oCount;
+        return _oCount;
     }
     
+    /**
+     * Checking if the point is
+     * on the board
+     * @param p the point the check
+     * @return the point is on the board or not
+     */
     public boolean pointExists(Point p) {
-        return 0 <= p.getX() && p.getX() < boardSize &&
-               0 <= p.getY() && p.getY() < boardSize;
+        return 0 <= p.getX() && p.getX() < _boardSize &&
+               0 <= p.getY() && p.getY() < _boardSize;
     }
     
+    /**
+     * Checking if the cell
+     * in the point is Empty
+     * @param p the cell's location
+     * @return the point is Empty
+     */
     public boolean isCellEmpty(Point p) {
         if (!pointExists(p)) {
             return false;
         }
-        return theBoard[p.getX()][p.getY()] == Cell.Empty;
+        return _theBoard[p.getX()][p.getY()] == Cell.Empty;
     }
     
-    public boolean put(Point p, Cell playerType) {
+    /**
+     * Setting the cell's value
+     * @param p the cell's location
+     * @param playerType the new value
+     * @return the action succeeded
+     */
+    public boolean setCell(Point p, Cell playerType) {
         if (!pointExists(p)) {
             return false;
         }
-        theBoard[p.getX()][p.getY()] = playerType;
+        
+        Cell before = _theBoard[p.getX()][p.getY()];
+        switch (before) {
+            case X:     _xCount--;
+                        break;
+            case O:     _oCount--;
+                        break;
+            default:    break;
+        }
+        
+        _theBoard[p.getX()][p.getY()] = playerType;
+        
+        switch (playerType) {
+            case X:     _xCount++;
+                        break;
+            case O:     _oCount++;
+                        break;
+            default:    break;
+        }
         return true;
     }
     
+    /**
+     * Returning the cell's value
+     * @param p the cell's location
+     * @return the cell's value
+     */
     public Cell getCell(Point p) {
         if (!pointExists(p)) {
             return Cell.Empty;
         }
         
-        return theBoard[p.getX()][p.getY()];
+        return _theBoard[p.getX()][p.getY()];
     }
 }

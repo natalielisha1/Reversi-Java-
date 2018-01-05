@@ -10,10 +10,26 @@ package reversi;
  * @author ofek_
  */
 public enum Cell {
+
+    /**
+     *
+     */
     Empty,
+
+    /**
+     *
+     */
     O,
+
+    /**
+     *
+     */
     X;
     
+    /**
+     *
+     * @return
+     */
     public Cell advCellType() {
         switch (this) {
             case O:     return X;

@@ -5,10 +5,45 @@
  */
 package reversi;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  *
  * @author ofek_
  */
-public class GameLogic {
+public interface GameLogic {
+
+    /**
+     *
+     * @return
+     */
+    public Direction[] availableDirections();
     
+    /**
+     *
+     * @param cell
+     * @return
+     */
+    public HashSet<Point> calcMoves(Cell cell);
+    
+    /**
+     *
+     * @param point
+     * @param cell
+     * @return
+     */
+    public boolean put(Point point, Cell cell);
+    
+    /**
+     *
+     * @return
+     */
+    public HashMap<String, Integer> getQuantities();
+    
+    /**
+     *
+     * @return
+     */
+    public GameStatus checkWinning();
 }
