@@ -9,37 +9,23 @@ import java.util.HashSet;
 
 /**
  *
- * @author ofek_
+ * @author OfekSegal
  */
-public class GUIPlayer implements Player{
+public class BlankPlayer implements Player{
     private Cell _type;
-    private boolean _toPrint;
     
-    public GUIPlayer(Cell type) {
+    public BlankPlayer(Cell type) {
         _type = type;
-        _toPrint = true;
     }
     
-    public GUIPlayer(Cell type, boolean toPrint) {
-        _type = type;
-        _toPrint = toPrint;
-    }
-
     @Override
     public Point makeMove(HashSet<Point> options) {
-        //TODO
-        
-        return Game.NO_MOVE_POINT;
+        return new Point(-1,-1);
     }
 
     @Override
     public void sendMessage(String message) {
-        if (_toPrint) {
-            //Print the message (if it's something to show)
-            if (message.contains("won") || message.contains("tie")) {
-                //Show the message
-            }
-        }
+        //Do nothing
     }
 
     @Override
@@ -51,4 +37,5 @@ public class GUIPlayer implements Player{
     public void setType(Cell newType) {
         _type = newType;
     }
+    
 }

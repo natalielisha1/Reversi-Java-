@@ -151,6 +151,11 @@ public class ReversiLogic implements GameLogic {
         }
     }
     
+    @Override
+    public String boardToString() {
+        return _gameBoard.toString();
+    }
+    
     private void initBoard() {
         int middle = _gameBoard.getBoardSize()/2 -1;
         Point[] firstXLocations = new Point[] {new Point(middle, middle + 1),
@@ -209,5 +214,4 @@ public class ReversiLogic implements GameLogic {
             }
         }
     }
-    
 }

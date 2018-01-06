@@ -5,17 +5,23 @@
  */
 package reversi;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.PrintWriter;
 
 /**
  *
  * @author OfekSegal
  */
-public class GameSettings implements Serializable {
+public class GameSettings {
+    //The Singleton instance
+    private static GameSettings _instance = null;
+    
+    private final static String SETTINGS_FILE_NAME = "settings.ond";
+    
     private Cell _startingPlayer;
     
     private DiskColor _xPlayerColor;
@@ -23,11 +29,47 @@ public class GameSettings implements Serializable {
     
     private int _boardSize;
     
-    public GameSettings() {
+    private GameSettings() {
         _startingPlayer = Cell.X;
         _xPlayerColor = DiskColor.BLACK;
         _oPlayerColor = DiskColor.WHITE;
         _boardSize = 8;
+    }
+    
+    public static GameSettings getInstance() {
+        if (_instance == null) {
+            _instance = loadFromFile();
+        }
+        return _instance;
+    }
+    
+    private static GameSettings loadFromFile() {
+        try (FileReader file = new FileReader(SETTINGS_FILE_NAME);
+             BufferedReader reader = new BufferedReader(file)) {
+            GameSettings newInstance = new GameSettings();
+            newInstance._startingPlayer = Cell.valueOf(reader.readLine());
+            newInstance._xPlayerColor = DiskColor.valueOf(reader.readLine());
+            newInstance._oPlayerColor = DiskColor.valueOf(reader.readLine());
+            newInstance._boardSize = Integer.getInteger(reader.readLine());
+            return newInstance;
+        } catch (Exception ex) {
+            return new GameSettings();
+        }
+    }
+
+    public void saveToFile() {
+        try (FileWriter file = new FileWriter(SETTINGS_FILE_NAME);
+             PrintWriter printer = new PrintWriter(file)) {
+            printer.println(_startingPlayer.name());
+            printer.println(_xPlayerColor.name());
+            printer.println(_oPlayerColor.name());
+            printer.println(_boardSize);
+            printer.close();
+            file.close();
+        } catch (Exception ex) {
+            //Unknown Error, printing to console
+            System.out.println("saveToFile failed with " + ex);
+        }
     }
     
     public Cell getStartingPlayer() {
@@ -60,29 +102,5 @@ public class GameSettings implements Serializable {
     
     public void setBoardSize(int newSize) {
         _boardSize = newSize;
-    }
-
-    public static GameSettings loadFromFile() {
-        try (FileInputStream fileIn = new FileInputStream("settings.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn)) {
-            GameSettings loaded = (GameSettings) in.readObject();
-            in.close();
-            fileIn.close();
-            return loaded;
-        } catch (Exception ex) {
-            return new GameSettings();
-        }
-    }
-
-    public void saveToFile() {
-        try (FileOutputStream fileOut = new FileOutputStream("settings.ser");
-             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(this);
-            out.close();
-            fileOut.close();
-        } catch (Exception ex) {
-            //Unknown Error, printing to console
-            System.out.println("saveToFile failed with " + ex);
-        }
     }
 }

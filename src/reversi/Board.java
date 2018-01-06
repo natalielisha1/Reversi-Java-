@@ -145,4 +145,44 @@ public class Board {
         
         return _theBoard[p.getX()][p.getY()];
     }
+    
+    @Override
+    public String toString() {
+        String toReturn = "";
+	toReturn += " | ";
+	for (int counter = 0; counter < _boardSize; counter++) {
+            String numberToString = Integer.toString(counter + 1);
+            toReturn += numberToString;
+            toReturn += " | ";
+	}
+        toReturn += "\n";
+	for (int index = 0; index < 2 + 4 * _boardSize; index++) {
+            toReturn += "-";
+        }
+        toReturn += "\n";
+        //Going through the board, line by line
+        for (int outer = 0; outer < _boardSize; outer++) {
+            String numberToString = Integer.toString(outer + 1);
+            toReturn += numberToString;
+            toReturn += "| ";
+            for (int inner = 0; inner < _boardSize; inner++) {
+                //Choosing what to print
+                switch (_theBoard[outer][inner]) {
+                    case Empty:     toReturn += " ";
+                                    break;
+                    case X:         toReturn += "X";
+                                    break;
+                    case O:         toReturn += "O";
+                                    break;
+                }
+                toReturn += " | ";
+            }
+            toReturn += "\n";
+            for (int index = 0; index < 2 + 4 * _boardSize; index++) {
+                toReturn += "-";
+            }
+            toReturn += "\n";
+        }
+        return toReturn;
+    }
 }

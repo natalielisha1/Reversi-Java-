@@ -10,29 +10,10 @@ package reversi;
  * @author ofek_
  */
 public enum GameStatus {
-
-    /**
-     *
-     */
+    
     NotPlaying,
-
-    /**
-     *
-     */
     InProgress,
-
-    /**
-     *
-     */
     XWins,
-
-    /**
-     *
-     */
     OWins,
-
-    /**
-     *
-     */
     Tie;
 }

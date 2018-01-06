@@ -46,4 +46,6 @@ public interface GameLogic {
      * @return
      */
     public GameStatus checkWinning();
+    
+    public String boardToString();
 }

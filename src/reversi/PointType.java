@@ -7,22 +7,17 @@ package reversi;
 
 /**
  *
- * @author ofek_
+ * @author OfekSegal
  */
-public enum Cell {
-    Empty,
-    O,
-    X;
+public enum PointType {
+    Board,
+    Printable;
     
-    /**
-     *
-     * @return
-     */
-    public Cell advCellType() {
+    public PointType reverse() {
         switch (this) {
-            case O:     return X;
-            case X:     return O;
-            default:    return Empty;
+            case Board:     return Printable;
+            case Printable: return Board;
+            default:        return Board;
         }
     }
 }

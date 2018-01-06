@@ -10,15 +10,17 @@ package reversi;
  * @author ofek_
  */
 public class Point {
-    private int xLoc;
-    private int yLoc;
+    private int _xLoc;
+    private int _yLoc;
+    private PointType _type;
     
     /**
      *
      */
     public Point() {
-        xLoc = -1;
-        yLoc = -1;
+        _xLoc = -1;
+        _yLoc = -1;
+        _type = PointType.Board;
     }
     
     /**
@@ -27,8 +29,21 @@ public class Point {
      * @param y
      */
     public Point(int x, int y) {
-        xLoc = x;
-        yLoc = y;
+        _xLoc = x;
+        _yLoc = y;
+        _type = PointType.Board;
+    }
+    
+    public Point(int x, int y, PointType type) {
+        _xLoc = x;
+        _yLoc = y;
+        _type = type;
+    }
+    
+    public Point(Point p) {
+        _xLoc = p._xLoc;
+        _yLoc = p._yLoc;
+        _type = p._type;
     }
     
     /**
@@ -36,7 +51,7 @@ public class Point {
      * @return
      */
     public int getX() {
-        return xLoc;
+        return _xLoc;
     }
     
     /**
@@ -44,7 +59,7 @@ public class Point {
      * @return
      */
     public int getY() {
-        return yLoc;
+        return _yLoc;
     }
     
     /**
@@ -52,7 +67,7 @@ public class Point {
      * @param x
      */
     public void setX(int x) {
-        xLoc = x;
+        _xLoc = x;
     }
     
     /**
@@ -60,7 +75,35 @@ public class Point {
      * @param y
      */
     public void setY(int y) {
-        yLoc = y;
+        _yLoc = y;
+    }
+    
+    public PointType getType() {
+        return _type;
+    }
+    
+    public void setType(PointType type) {
+        _type = type;
+    }
+    
+    public void alignToBoard() {
+        if (_type == PointType.Printable) {
+            _xLoc--;
+            _yLoc--;
+            _type = PointType.Board;
+        }
+    }
+    
+    public void alignToPrint() {
+        if (_type == PointType.Board) {
+            _xLoc++;
+            _yLoc++;
+            _type = PointType.Printable;
+        }
+    }
+    @Override
+    public String toString() {
+        return "(" + _xLoc + "," + _yLoc + ")";
     }
     
     @Override
@@ -72,8 +115,19 @@ public class Point {
             return false;
         }
         Point other = (Point) o;
-        return this.xLoc == other.xLoc &&
-               this.yLoc == other.yLoc;
+        if (this._type == PointType.Board) {
+            if (other._type == PointType.Printable) {
+                other = new Point(other);
+                other.alignToBoard();
+            }
+        } else {
+            if (other._type == PointType.Board) {
+                other = new Point(other);
+                other.alignToPrint();
+            }
+        }
+        return this._xLoc == other._xLoc &&
+               this._yLoc == other._yLoc;
     }
 
     @Override
@@ -81,23 +135,29 @@ public class Point {
         String toBecomeHash = "";
         int tempX, tempY;
         
-        if (xLoc < 0) {
+        if (_xLoc < 0) {
             toBecomeHash += "1";
-            tempX = xLoc * -1;
+            tempX = _xLoc * -1;
         } else {
             toBecomeHash += "0";
-            tempX = xLoc;
+            tempX = _xLoc;
         }
         toBecomeHash += tempX + "0";
         
-        if (yLoc < 0) {
+        if (_yLoc < 0) {
             toBecomeHash += "1";
-            tempY = yLoc * -1;
+            tempY = _yLoc * -1;
         } else {
             toBecomeHash += "0";
-            tempY = yLoc;
+            tempY = _yLoc;
         }
         toBecomeHash += tempY;
+        
+        if (_type == PointType.Board) {
+            toBecomeHash += "0";
+        } else {
+            toBecomeHash += "1";
+        }
         
         return Integer.getInteger(toBecomeHash);
     }
