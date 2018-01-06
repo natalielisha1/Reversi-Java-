@@ -1,4 +1,4 @@
-package reversi;
+package reversi.fxml;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
