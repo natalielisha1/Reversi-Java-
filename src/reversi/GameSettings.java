@@ -24,15 +24,15 @@ public class GameSettings {
     
     private Cell _startingPlayer;
     
-    private DiskColor _xPlayerColor;
-    private DiskColor _oPlayerColor;
+    private XDiskColor _xPlayerColor;
+    private ODiskColor _oPlayerColor;
     
     private int _boardSize;
     
     private GameSettings() {
         _startingPlayer = Cell.X;
-        _xPlayerColor = DiskColor.BLACK;
-        _oPlayerColor = DiskColor.WHITE;
+        _xPlayerColor = XDiskColor.Black;
+        _oPlayerColor = ODiskColor.White;
         _boardSize = 8;
     }
     
@@ -48,8 +48,8 @@ public class GameSettings {
              BufferedReader reader = new BufferedReader(file)) {
             GameSettings newInstance = new GameSettings();
             newInstance._startingPlayer = Cell.valueOf(reader.readLine());
-            newInstance._xPlayerColor = DiskColor.valueOf(reader.readLine());
-            newInstance._oPlayerColor = DiskColor.valueOf(reader.readLine());
+            newInstance._xPlayerColor = XDiskColor.valueOf(reader.readLine());
+            newInstance._oPlayerColor = ODiskColor.valueOf(reader.readLine());
             newInstance._boardSize = Integer.getInteger(reader.readLine());
             return newInstance;
         } catch (Exception ex) {
@@ -80,19 +80,19 @@ public class GameSettings {
         _startingPlayer = newStarting;
     }
     
-    public DiskColor getXColor() {
+    public XDiskColor getXColor() {
         return _xPlayerColor;
     }
     
-    public void setXColor(DiskColor newColor) {
+    public void setXColor(XDiskColor newColor) {
         _xPlayerColor = newColor;
     }
     
-    public DiskColor getOColor() {
+    public ODiskColor getOColor() {
         return _oPlayerColor;
     }
     
-    public void setOColor(DiskColor newColor) {
+    public void setOColor(ODiskColor newColor) {
         _oPlayerColor = newColor;
     }
     

@@ -37,7 +37,7 @@ public class GUIPlayer implements Player{
         if (_toPrint) {
             //Print the message (if it's something to show)
             if (message.contains("won") || message.contains("tie")) {
-                //Show the message
+                //TODO: Show the message
             }
         }
     }
@@ -50,5 +50,14 @@ public class GUIPlayer implements Player{
     @Override
     public void setType(Cell newType) {
         _type = newType;
+    }
+    
+    @Override
+    public String toString() {
+        switch (_type) {
+            case X:     return "Black";
+            case O:     return "White";
+            default:    return "ERROR";
+        }
     }
 }

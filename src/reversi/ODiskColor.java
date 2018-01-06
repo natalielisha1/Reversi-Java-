@@ -7,12 +7,8 @@ package reversi;
 
 /**
  *
- * @author ofek_
+ * @author OfekSegal
  */
-public enum GameStatus {
-    NotPlaying,
-    InProgress,
-    XWins,
-    OWins,
-    Tie;
+public enum ODiskColor {
+    White;
 }
