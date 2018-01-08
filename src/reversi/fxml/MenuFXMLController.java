@@ -12,15 +12,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
 
 /**
  *
  * @author ofek_
  */
 public class MenuFXMLController implements Initializable {
+	
+	@FXML
+	private VBox menuRoot;
     
     @FXML
     private Label label;
+
+    @FXML
+    private Button exit;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -31,6 +39,12 @@ public class MenuFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
+    @FXML
+    void exitProgram(ActionEvent event) {
+    	System.exit(0);
+    }
+    
     
 }
