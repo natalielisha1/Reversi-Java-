@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.SepiaTone?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TextArea layoutX="38.0" layoutY="82.0" prefHeight="294.0" prefWidth="380.0" promptText="soon to be the game board">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </TextArea>
-      <Text layoutX="429.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current  player:">
-         <font>
-            <Font name="Berlin Sans FB" size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="429.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Black player score:">
-         <font>
-            <Font name="Berlin Sans FB" size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="427.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="White player score:">
-         <font>
-            <Font name="Berlin Sans FB" size="14.0" />
-         </font>
-      </Text>
-   </children>
-   <effect>
-      <Glow>
-         <input>
-            <ColorAdjust brightness="0.07" contrast="0.1" saturation="0.12">
-               <input>
-                  <SepiaTone />
-               </input>
-            </ColorAdjust>
-         </input>
-      </Glow>
-   </effect>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+	<center>
+		<xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameCotroller" fx:id="root" spacing="10">
+	</center>
+   <right>
+      <VBox prefHeight="559.0" prefWidth="225.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="50.0" prefWidth="197.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current player: " textAlignment="CENTER" wrappingWidth="74.736328125">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox prefHeight="45.0" prefWidth="197.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Black player score:" textAlignment="CENTER">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox prefHeight="43.0" prefWidth="197.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="White player score:" textAlignment="CENTER">
+                     <font>
+                        <Font name="Berlin Sans FB" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

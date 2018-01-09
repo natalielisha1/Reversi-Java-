@@ -22,8 +22,8 @@
          <children>
             <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="42.0" prefWidth="303.0" text="STARTING PLAYER" textAlignment="CENTER">
                <items>
-                  <MenuItem mnemonicParsing="false" text="black player" />
-                  <MenuItem mnemonicParsing="false" text="white player" />
+                  <MenuItem mnemonicParsing="false" onAction="#setStartingPlayerToBlack" text="black player" />
+                  <MenuItem mnemonicParsing="false" onAction="#setStartingPlayerToWhite" text="white player" />
                </items>
                <VBox.margin>
                   <Insets left="160.0" top="30.0" />
@@ -72,23 +72,23 @@
             <ToggleButtonGroup selectionType="SINGLE" />
             <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="43.0" prefWidth="296.0" text="SIZE OF SCREEN" textAlignment="CENTER">
                <items>
-                  <MenuItem mnemonicParsing="false" text="4" />
-                  <MenuItem mnemonicParsing="false" text="5" />
-                  <MenuItem mnemonicParsing="false" text="6" />
-                  <MenuItem mnemonicParsing="false" text="7" />
-                  <MenuItem mnemonicParsing="false" text="8" />
-                  <MenuItem mnemonicParsing="false" text="9" />
-                  <MenuItem mnemonicParsing="false" text="10" />
-                  <MenuItem mnemonicParsing="false" text="11" />
-                  <MenuItem mnemonicParsing="false" text="12" />
-                  <MenuItem mnemonicParsing="false" text="13" />
-                  <MenuItem mnemonicParsing="false" text="14" />
-                  <MenuItem mnemonicParsing="false" text="15" />
-                  <MenuItem mnemonicParsing="false" text="16" />
-                  <MenuItem mnemonicParsing="false" text="17" />
-                  <MenuItem mnemonicParsing="false" text="18" />
-                  <MenuItem mnemonicParsing="false" text="19" />
-                  <MenuItem mnemonicParsing="false" text="20" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFour" text="4" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFive" text="5" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSix" text="6" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSeven" text="7" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToEight" text="8" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToNine" text="9" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToTen" text="10" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToEleven" text="11" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToTwelve" text="12" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToThirteen" text="13" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFourteen" text="14" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFifteen" text="15" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSixteen" text="16" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSeventeen" text="17" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToEighteen" text="18" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToNineteen" text="19" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSizeToTwenty" text="20" />
                </items>
                <font>
                   <Font name="AR CENA" size="21.0" />
