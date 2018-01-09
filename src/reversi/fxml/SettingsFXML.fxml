@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="settings" prefHeight="527.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="595.193359375">
+         <font>
+            <Font name="AR DELANEY" size="84.0" />
+         </font>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Text>
+      <VBox prefHeight="99.0" prefWidth="596.0">
+         <children>
+            <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="42.0" prefWidth="303.0" text="STARTING PLAYER" textAlignment="CENTER">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="black player" />
+                  <MenuItem mnemonicParsing="false" text="white player" />
+               </items>
+               <VBox.margin>
+                  <Insets left="160.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="AR CENA" size="24.0" />
+               </font>
+            </SplitMenuButton>
+         </children></VBox>
+      <VBox prefHeight="111.0" prefWidth="596.0">
+         <children>
+            <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="42.0" prefWidth="300.0" text="WHITE PLAYER'S COLOR" textAlignment="CENTER">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <VBox.margin>
+                  <Insets left="160.0" top="25.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="AR CENA" size="21.0" />
+               </font>
+            </SplitMenuButton>
+         </children></VBox>
+      <VBox prefHeight="78.0" prefWidth="593.0">
+         <children>
+            <VBox prefHeight="70.0" prefWidth="593.0">
+               <children>
+                  <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="43.0" prefWidth="296.0" text="BLACK PLAYER'S COLOR" textAlignment="CENTER">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <VBox.margin>
+                        <Insets left="160.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="AR CENA" size="21.0" />
+                     </font>
+                  </SplitMenuButton>
+               </children></VBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="70.0" prefWidth="593.0">
+         <children>
+            <ToggleButtonGroup selectionType="SINGLE" />
+            <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="43.0" prefWidth="296.0" text="SIZE OF SCREEN" textAlignment="CENTER">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="4" />
+                  <MenuItem mnemonicParsing="false" text="5" />
+                  <MenuItem mnemonicParsing="false" text="6" />
+                  <MenuItem mnemonicParsing="false" text="7" />
+                  <MenuItem mnemonicParsing="false" text="8" />
+                  <MenuItem mnemonicParsing="false" text="9" />
+                  <MenuItem mnemonicParsing="false" text="10" />
+                  <MenuItem mnemonicParsing="false" text="11" />
+                  <MenuItem mnemonicParsing="false" text="12" />
+                  <MenuItem mnemonicParsing="false" text="13" />
+                  <MenuItem mnemonicParsing="false" text="14" />
+                  <MenuItem mnemonicParsing="false" text="15" />
+                  <MenuItem mnemonicParsing="false" text="16" />
+                  <MenuItem mnemonicParsing="false" text="17" />
+                  <MenuItem mnemonicParsing="false" text="18" />
+                  <MenuItem mnemonicParsing="false" text="19" />
+                  <MenuItem mnemonicParsing="false" text="20" />
+               </items>
+               <font>
+                  <Font name="AR CENA" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="160.0" top="10.0" />
+               </VBox.margin>
+            </SplitMenuButton>
+         </children>
+      </VBox>
+   </children>
+</VBox>

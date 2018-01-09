@@ -16,17 +16,17 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="179.0" text="START GAME">
+                  <Button fx:id="startGameBtn" mnemonicParsing="false" onAction="#startGame" prefHeight="42.0" prefWidth="179.0" text="START GAME">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="179.0" text="SETTINGS">
+                  <Button fx:id="settingsBtn" mnemonicParsing="false" onAction="#changeSettings" prefHeight="36.0" prefWidth="179.0" text="SETTINGS">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exit" mnemonicParsing="false" onAction="#exitProgram" prefHeight="36.0" prefWidth="179.0" text="EXIT">
+                  <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitProgram" prefHeight="36.0" prefWidth="179.0" text="EXIT">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>

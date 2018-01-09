@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author ofek_
+ * @author ofek_and_natalie
  */
 public class ReversiJava extends Application {
     

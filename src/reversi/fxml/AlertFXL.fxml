@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="alert" stylesheets="@../css/alert.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.AlertFXMLController">
+   <children>
+      <BorderPane prefHeight="510.0" prefWidth="400.0">
+         <top>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="THE WINNER IS" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="AR CHRISTY" size="53.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="70.0" />
+               </BorderPane.margin>
+            </Text>
+         </top>
+         <center>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="______ PLAYER" textAlignment="CENTER" BorderPane.alignment="TOP_CENTER">
+               <font>
+                  <Font name="AR CHRISTY" size="47.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
+            </Text>
+         </center>
+      </BorderPane>
+   </children>
+</VBox>
