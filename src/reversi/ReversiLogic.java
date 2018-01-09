@@ -18,6 +18,7 @@ public class ReversiLogic implements GameLogic {
     private final Board _gameBoard;
     private final HashSet<Point> _xLocations;
     private final HashSet<Point> _oLocations;
+    private final GUIAdapter _adapter;
     
     /**
      * Creates a new ReversiLogic
@@ -29,6 +30,7 @@ public class ReversiLogic implements GameLogic {
         _gameBoard = new Board(boardSize);
         _xLocations = new HashSet<>();
         _oLocations = new HashSet<>();
+        _adapter = GUIAdapter.getInstance();
         initBoard();
     }
 
@@ -67,8 +69,9 @@ public class ReversiLogic implements GameLogic {
         Direction[] dirs = availableDirections();
         
         while (advLocations.hasNext()) {
+            Point pointToCheck = advLocations.next();
             for (Direction dir : dirs) {
-                Point currPoint = dir.getPointFromDir(advLocations.next());
+                Point currPoint = dir.getPointFromDir(pointToCheck);
                 if (checkMoveEmpty(cell, currPoint, dir)) {
                     options.add(currPoint);
                 }
@@ -107,6 +110,9 @@ public class ReversiLogic implements GameLogic {
                     }
                 }
             }
+            _adapter.draw(_gameBoard);
+            _adapter.changeBlackPlayerScore(_gameBoard.getXCount());
+            _adapter.changeWhitePlayerScore(_gameBoard.getOCount());
             return true;
         }
     }
@@ -170,6 +176,9 @@ public class ReversiLogic implements GameLogic {
             _gameBoard.setCell(oLocation, Cell.O);
             _oLocations.add(oLocation);
         }
+        _adapter.draw(_gameBoard);
+        _adapter.changeBlackPlayerScore(_gameBoard.getXCount());
+        _adapter.changeWhitePlayerScore(_gameBoard.getOCount());
     }
     
     private boolean checkMoveEmpty(Cell playerType, Point point, Direction dir) {

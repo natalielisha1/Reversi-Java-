@@ -5,7 +5,10 @@
  */
 package reversi;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  *
@@ -13,23 +16,37 @@ import java.util.HashSet;
  */
 public class GUIPlayer implements Player{
     private Cell _type;
-    private boolean _toPrint;
+    private final boolean _toPrint;
+    
+    private final GUIAdapter _adapter;
     
     public GUIPlayer(Cell type) {
         _type = type;
         _toPrint = true;
+        _adapter = GUIAdapter.getInstance(true);
     }
     
     public GUIPlayer(Cell type, boolean toPrint) {
         _type = type;
         _toPrint = toPrint;
+        _adapter = GUIAdapter.getInstance(true);
     }
 
     @Override
     public Point makeMove(HashSet<Point> options) {
-        //TODO
-        
-        return Game.NO_MOVE_POINT;
+        if (options.isEmpty()) {
+            _adapter.infoAlert("No Move Available!", "You don't have any move available, next player will now play");
+            return Game.NO_MOVE_POINT;
+        }
+        System.out.println("Options: " + Arrays.toString(options.toArray()));
+        Point currPoint = _adapter.requestPoint();
+        System.out.println(currPoint);
+        while (!options.contains(currPoint)) {
+            _adapter.infoAlert("Ilegal Move!", "That move is not available to you, please choose a different option");
+            currPoint = _adapter.requestPoint();
+            System.out.println(currPoint);
+        }
+        return currPoint;
     }
 
     @Override
@@ -37,7 +54,10 @@ public class GUIPlayer implements Player{
         if (_toPrint) {
             //Print the message (if it's something to show)
             if (message.contains("won") || message.contains("tie")) {
-                //TODO: Show the message
+                message = message.replace("X", "Black");
+                message = message.replace("O", "White");
+                
+                _adapter.infoAlert("Game Over!", message);
             }
         }
     }

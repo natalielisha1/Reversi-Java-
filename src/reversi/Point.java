@@ -159,6 +159,6 @@ public class Point {
             toBecomeHash += "1";
         }
         
-        return Integer.getInteger(toBecomeHash);
+        return Integer.parseInt(toBecomeHash);
     }
 }

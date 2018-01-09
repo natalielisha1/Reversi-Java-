@@ -1,103 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="settings" prefHeight="527.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="527.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.SettingsFXMLController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="595.193359375">
-         <font>
-            <Font name="AR DELANEY" size="84.0" />
-         </font>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" textAlignment="CENTER" wrappingWidth="595.193359375" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="AR DELANEY" size="84.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Text>
+         </top>
+         <center>
+            <GridPane alignment="CENTER" hgap="20.0" vgap="110.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="5.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Player:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="startingPlayerChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="White Player's Disk:" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="whitePlayerChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Black Player's Disk:" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="blackPlayerChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Board Size:" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <ChoiceBox fx:id="boardSizeChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ImageView fx:id="whitePlayerDiskImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ImageView fx:id="blackPlayerDiskImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets top="40.0" />
+               </padding>
+            </GridPane>
+         </center>
          <VBox.margin>
             <Insets />
          </VBox.margin>
-      </Text>
-      <VBox prefHeight="99.0" prefWidth="596.0">
-         <children>
-            <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="42.0" prefWidth="303.0" text="STARTING PLAYER" textAlignment="CENTER">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#setStartingPlayerToBlack" text="black player" />
-                  <MenuItem mnemonicParsing="false" onAction="#setStartingPlayerToWhite" text="white player" />
-               </items>
-               <VBox.margin>
-                  <Insets left="160.0" top="30.0" />
-               </VBox.margin>
+         <bottom>
+            <Button fx:id="saveBtn" mnemonicParsing="false" text="Save and Exit" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
                <font>
-                  <Font name="AR CENA" size="24.0" />
+                  <Font size="26.0" />
                </font>
-            </SplitMenuButton>
-         </children></VBox>
-      <VBox prefHeight="111.0" prefWidth="596.0">
-         <children>
-            <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="42.0" prefWidth="300.0" text="WHITE PLAYER'S COLOR" textAlignment="CENTER">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-               <VBox.margin>
-                  <Insets left="160.0" top="25.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="AR CENA" size="21.0" />
-               </font>
-            </SplitMenuButton>
-         </children></VBox>
-      <VBox prefHeight="78.0" prefWidth="593.0">
-         <children>
-            <VBox prefHeight="70.0" prefWidth="593.0">
-               <children>
-                  <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="43.0" prefWidth="296.0" text="BLACK PLAYER'S COLOR" textAlignment="CENTER">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                     <VBox.margin>
-                        <Insets left="160.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="AR CENA" size="21.0" />
-                     </font>
-                  </SplitMenuButton>
-               </children></VBox>
-         </children>
-      </VBox>
-      <VBox prefHeight="70.0" prefWidth="593.0">
-         <children>
-            <ToggleButtonGroup selectionType="SINGLE" />
-            <SplitMenuButton alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" popupSide="TOP" prefHeight="43.0" prefWidth="296.0" text="SIZE OF SCREEN" textAlignment="CENTER">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFour" text="4" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFive" text="5" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSix" text="6" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSeven" text="7" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToEight" text="8" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToNine" text="9" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToTen" text="10" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToEleven" text="11" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToTwelve" text="12" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToThirteen" text="13" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFourteen" text="14" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToFifteen" text="15" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSixteen" text="16" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToSeventeen" text="17" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToEighteen" text="18" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToNineteen" text="19" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSizeToTwenty" text="20" />
-               </items>
-               <font>
-                  <Font name="AR CENA" size="21.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="160.0" top="10.0" />
-               </VBox.margin>
-            </SplitMenuButton>
-         </children>
-      </VBox>
+            </Button>
+         </bottom>
+      </BorderPane>
    </children>
 </VBox>

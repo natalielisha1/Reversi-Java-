@@ -24,6 +24,12 @@ public class Board {
     public Board() {
         _boardSize = DEFAULT_SIZE;
         _theBoard = new Cell[_boardSize][_boardSize];
+        
+        for (int i = 0; i < _boardSize; i++) {
+            for (int j = 0; j < _boardSize; j++) {
+                _theBoard[i][j] = Cell.Empty;
+            }
+        }
     }
     
     /**
@@ -34,6 +40,12 @@ public class Board {
     public Board(int size) {
         _boardSize = size;
         _theBoard = new Cell[_boardSize][_boardSize];
+        
+        for (int i = 0; i < _boardSize; i++) {
+            for (int j = 0; j < _boardSize; j++) {
+                _theBoard[i][j] = Cell.Empty;
+            }
+        }
     }
     
     /**

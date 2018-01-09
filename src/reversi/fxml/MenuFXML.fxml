@@ -26,7 +26,7 @@
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exitProgram" prefHeight="36.0" prefWidth="179.0" text="EXIT">
+                  <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="36.0" prefWidth="179.0" text="EXIT">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
                      </font>

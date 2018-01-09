@@ -6,10 +6,8 @@
 package reversi;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 
 /**
@@ -50,7 +48,7 @@ public class GameSettings {
             newInstance._startingPlayer = Cell.valueOf(reader.readLine());
             newInstance._xPlayerColor = XDiskColor.valueOf(reader.readLine());
             newInstance._oPlayerColor = ODiskColor.valueOf(reader.readLine());
-            newInstance._boardSize = Integer.getInteger(reader.readLine());
+            newInstance._boardSize = Integer.parseInt(reader.readLine());
             return newInstance;
         } catch (Exception ex) {
             return new GameSettings();

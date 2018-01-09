@@ -27,6 +27,8 @@ public class Game {
     
     private GameStatus _status;
     
+    private GUIAdapter _adapter;
+    
     private Player _xPlayer;
     private Player _oPlayer;
     
@@ -46,10 +48,13 @@ public class Game {
         
         _logic = new ReversiLogic(_settings.getBoardSize());
         
+        _adapter = GUIAdapter.getInstance();
+        
         _status = GameStatus.NotPlaying;
         
         switch (xPlayerIdentifier) {
             case GUI_PLAYER_IDENTIFIER:     _xPlayer = new GUIPlayer(Cell.X, true);
+                                            break;
             case BLANK_PLAYER_IDENTIFIER:   _xPlayer = new BlankPlayer(Cell.X);
                                             break;
             /*
@@ -112,6 +117,8 @@ public class Game {
         
         _logic = g._logic;
         
+        _adapter = g._adapter;
+        
         _status = g._status;
         
         _xPlayer = new BlankPlayer(Cell.X);
@@ -154,11 +161,14 @@ public class Game {
             //The other player's index
             int otherPlayer = (currPlayer + 1) % 2;
             
-            //Printing the board, and letting X play
+            //Printing the board, and letting the curr player play
             thePlayers[currPlayer].sendMessage("Current board:");
             thePlayers[currPlayer].sendMessage("");
             String boardToString = _logic.boardToString();
-            _xPlayer.sendMessage(boardToString);
+            thePlayers[currPlayer].sendMessage(boardToString);
+            
+            //Changing the curr player (GUI Only!)
+            _adapter.changeCurrPlayer(thePlayers[currPlayer]);
             
             if (!move.equals(NO_MOVE_POINT)) {
                 move.alignToPrint();
@@ -170,8 +180,10 @@ public class Game {
             tempString = thePlayers[currPlayer].getType().toString();
             tempString += ": It's your move";
             thePlayers[currPlayer].sendMessage(tempString);
+            
             //Calc'ing the moves available to the curr player
             tempOptions = _logic.calcMoves(thePlayers[currPlayer].getType());
+            
             //Letting him choose
             move = thePlayers[currPlayer].makeMove(tempOptions);
             if (move.equals(END_GAME_POINT)) {
