@@ -6,20 +6,20 @@
 package reversi.fxml;
 
 import java.net.URL;
+
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
+import java.util.HashSet;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.text.Text;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+
 import reversi.Board;
 import reversi.GUIAdapter;
 import reversi.Point;
-import reversi.PointType;
 
 /**
  *
@@ -95,5 +95,9 @@ public class GameController implements Initializable{
     
     public void changeBlackPlayerScore(String score) {
         blackPlayerScoreText.setText(score);
+    }
+    
+    public void markOptions(HashSet<Point> options) {
+        boardController.markOptions(options);
     }
 }

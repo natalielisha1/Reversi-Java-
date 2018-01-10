@@ -8,6 +8,9 @@ package reversi;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+
+import java.util.HashSet;
+
 import reversi.fxml.GameController;
 
 /**
@@ -121,6 +124,12 @@ public class GUIAdapter {
                     alert.showAndWait();
                 }
             });
+        }
+    }
+    
+    public void markOptions(HashSet<Point> options) {
+        if (_isGUI && _controller != null) {
+            _controller.markOptions(options);
         }
     }
 }

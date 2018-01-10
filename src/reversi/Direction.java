@@ -10,45 +10,13 @@ package reversi;
  * @author ofek_
  */
 public enum Direction {
-
-    /**
-     *
-     */
     Up,
-
-    /**
-     *
-     */
     Down,
-
-    /**
-     *
-     */
     Left,
-
-    /**
-     *
-     */
     Right,
-
-    /**
-     *
-     */
     UpLeft,
-
-    /**
-     *
-     */
     UpRight,
-
-    /**
-     *
-     */
     DownLeft,
-
-    /**
-     *
-     */
     DownRight;
     
     /**

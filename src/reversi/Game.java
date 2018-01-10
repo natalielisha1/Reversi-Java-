@@ -184,6 +184,9 @@ public class Game {
             //Calc'ing the moves available to the curr player
             tempOptions = _logic.calcMoves(thePlayers[currPlayer].getType());
             
+            //Showing the options (GUI Only!)
+            _adapter.markOptions(tempOptions);
+            
             //Letting him choose
             move = thePlayers[currPlayer].makeMove(tempOptions);
             if (move.equals(END_GAME_POINT)) {

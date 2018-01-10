@@ -1,14 +1,15 @@
 package reversi.fxml;
 
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
 import reversi.*;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
+import javafx.scene.image.Image;
+
+import java.util.HashSet;
 
 public class BoardController extends GridPane {
     private final GameSettings gameSettings;
@@ -87,6 +88,13 @@ public class BoardController extends GridPane {
             }
         }
         firstTime = false;
+    }
+    
+    public void markOptions(HashSet<Point> options) {
+        for (Point option : options) {
+            option.alignToBoard();
+            theCells[option.getX()][option.getY()].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/ReadyCell.png")));
+        }
     }
 
     public Point calcMouseClick(MouseEvent event) {

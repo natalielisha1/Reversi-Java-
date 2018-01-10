@@ -42,9 +42,7 @@ public class ReversiLogic implements GameLogic {
      */
     @Override
     public Direction[] availableDirections() {
-        return new Direction[] {Direction.Up, Direction.Down, Direction.Left,
-                                Direction.Right, Direction.UpLeft, Direction.UpRight,
-                                Direction.DownLeft, Direction.DownRight};
+        return Direction.values();
     }
 
     /**
@@ -70,6 +68,7 @@ public class ReversiLogic implements GameLogic {
         
         while (advLocations.hasNext()) {
             Point pointToCheck = advLocations.next();
+            pointToCheck.alignToBoard();
             for (Direction dir : dirs) {
                 Point currPoint = dir.getPointFromDir(pointToCheck);
                 if (checkMoveEmpty(cell, currPoint, dir)) {
@@ -97,6 +96,7 @@ public class ReversiLogic implements GameLogic {
                 tempLocations.add(point);
                 if (tryToPut(cell, dir.getPointFromDir(point), dir, tempLocations)) {
                     for (Point currPoint : tempLocations) {
+                        currPoint.alignToBoard();
                         _gameBoard.setCell(currPoint, cell);
                         _xLocations.remove(currPoint);
                         _oLocations.remove(currPoint);
