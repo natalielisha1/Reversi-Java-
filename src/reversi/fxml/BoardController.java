@@ -10,6 +10,10 @@ import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 
 import java.util.HashSet;
+import javafx.geometry.Insets;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 
 public class BoardController extends GridPane {
     private final GameSettings gameSettings;
@@ -17,8 +21,6 @@ public class BoardController extends GridPane {
     
     private final ImageView[][] theCells;
     private final int theSize;
-    
-    private boolean firstTime = true;
     
     private Board lastBoard;
 
@@ -28,9 +30,6 @@ public class BoardController extends GridPane {
         
         theSize = gameSettings.getBoardSize();
         theCells = new ImageView[theSize][theSize];
-        
-        //Temporary board
-        lastBoard = new Board(theSize);
         
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BoardFXML.fxml"));
         fxmlLoader.setRoot(this);
@@ -42,6 +41,30 @@ public class BoardController extends GridPane {
             System.out.println("BoardController error:");
             ex.printStackTrace();
         }
+        
+        //Defining the board and the cells
+        this.setHgap(0);
+        this.setVgap(0);
+        
+        for (int i = 0; i < theSize; i++) {
+            for (int j = 0; j < theSize; j++) {
+                final int row = i;
+                final int col = j;
+                theCells[i][j] = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/BlankCell.png")));
+                
+                theCells[i][j].setPreserveRatio(false);
+                
+                theCells[i][j].fitHeightProperty().bind(this.prefHeightProperty().divide(theSize));
+                theCells[i][j].fitWidthProperty().bind(this.prefWidthProperty().divide(theSize));
+                
+                //Should find a way to do it without attaching a listener on every imageview
+                theCells[i][j].setOnMouseClicked((MouseEvent event) -> {
+                    Point newPoint = new Point(row, col, PointType.Board);
+                    adapter.setPoint(newPoint);
+                });
+                this.add(theCells[i][j], j, i);
+            }
+        }
     }
     
     public void draw(Board theBoard) {
@@ -51,43 +74,23 @@ public class BoardController extends GridPane {
    }
     
     public void draw() {
-        int height = (int) this.getPrefHeight();
-        int width = (int) this.getPrefWidth();
-        
-        int cellHeight = height / theSize;
-        int cellWidth = width / theSize;
+        if (lastBoard == null) {
+            return;
+        }
         
         for (int i = 0; i < theSize; i++) {
             for (int j = 0; j < theSize; j++) {
                 Cell currCell = lastBoard.getCell(new Point(i, j));
-                if (firstTime) {
-                    final int row = i;
-                    final int col = j;
-                    theCells[i][j] = new ImageView();
-                    
-                    //Should find a way to do it without attaching a listener on every imageview
-                    theCells[i][j].setOnMouseClicked((MouseEvent event) -> {
-                        Point newPoint = new Point(row, col, PointType.Board);
-                        adapter.setPoint(newPoint);
-                    });
-                    this.add(theCells[i][j], j, i);
-                }
                 switch (currCell) {
                     case O:     theCells[i][j].setImage(gameSettings.getOColor().getCell());
                                 break;
                     case X:     theCells[i][j].setImage(gameSettings.getXColor().getCell());
                                 break;
-                    default:    //System.out.println(getClass().getClassLoader().getResource("reversi/res/BlankCell.png"));
-                                theCells[i][j].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/BlankCell.png")));
+                    default:    theCells[i][j].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/BlankCell.png")));
                                 break;
                 }
-                theCells[i][j].setPreserveRatio(false);
-                
-                theCells[i][j].setFitHeight(cellHeight);
-                theCells[i][j].setFitWidth(cellWidth);
             }
         }
-        firstTime = false;
     }
     
     public void markOptions(HashSet<Point> options) {

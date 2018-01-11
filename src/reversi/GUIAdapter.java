@@ -67,11 +67,14 @@ public class GUIAdapter {
                 try {
                     _lock.wait();
                 } catch (InterruptedException ex) {
-                    //Weird Error - if happens, debug it
-                    System.out.println("request point error - " + ex.getLocalizedMessage());
+                    _request = false;
+                    _fulfiled = false;
+                    Thread.currentThread().interrupt();
+                    return Game.END_GAME_POINT;
                 }
             }
         }
+        
         _request = false;
         _fulfiled = false;
         return _lastPoint;
@@ -130,6 +133,12 @@ public class GUIAdapter {
     public void markOptions(HashSet<Point> options) {
         if (_isGUI && _controller != null) {
             _controller.markOptions(options);
+        }
+    }
+    
+    public void stop() {
+        synchronized (_lock) {
+            _lock.notifyAll();
         }
     }
 }

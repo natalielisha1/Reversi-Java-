@@ -8,6 +8,7 @@ package reversi.fxml;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import reversi.GUIAdapter;
 import reversi.Game;
 
@@ -33,9 +35,12 @@ public class MenuFXMLController implements Initializable {
     @FXML
     private Button exitBtn;
     
+    private Thread gameThread = null;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         exitBtn.setOnAction((event) -> {
+            Platform.exit();
             System.exit(0);
         });
     }
@@ -57,25 +62,44 @@ public class MenuFXMLController implements Initializable {
 
     @FXML
     void startGame(ActionEvent event) {
+        Stage theStage = null;
         try {
             FXMLLoader gameLoader = new FXMLLoader(getClass().getResource("GameFXML.fxml"));
             Parent gameParent = gameLoader.load();
             Scene gameScene = new Scene(gameParent);
-            Stage theStage = (Stage) startGameBtn.getScene().getWindow();
+            theStage = (Stage) startGameBtn.getScene().getWindow();
             theStage.setScene(gameScene);
         }   catch (Exception ex) {
             //Weird Error - if happens -> debug
-            System.out.println("ChangeSettings error:");
+            System.out.println("startGame error:");
             ex.printStackTrace();
         }
-        Thread gameThread = new Thread(){
+        gameThread = new Thread(){
             @Override
             public void run() {
-                Game game = new Game(Game.GUI_PLAYER_IDENTIFIER, Game.GUI_PLAYER_IDENTIFIER);
-                game.run();
+                Game theGame = new Game(Game.GUI_PLAYER_IDENTIFIER, Game.GUI_PLAYER_IDENTIFIER);
+                theGame.run();
             }
         };
         gameThread.start();
+        if (theStage != null) {
+            theStage.setOnCloseRequest((WindowEvent event1) -> {
+                if (gameThread != null) {
+                    try {
+                        gameThread.interrupt();
+                        GUIAdapter adapter = GUIAdapter.getInstance(true);
+                        adapter.stop();
+                        gameThread.join();
+                    } catch (Exception ex) {
+                        //Weird error - if happens -> debug it
+                        System.out.println("startGame (kill) error:");
+                        ex.printStackTrace();
+                    }
+                }
+                Platform.exit();
+                System.exit(0);
+            });
+        }
     }
     
 }

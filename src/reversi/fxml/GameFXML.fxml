@@ -2,23 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="root" maxHeight="520.0" maxWidth="750.0" minHeight="520.0" minWidth="750.0" prefHeight="520.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.GameController">
-   <children>
-      <GridPane fx:id="board" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-         <HBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </HBox.margin>
-      </GridPane>
-      <VBox maxWidth="240.0" minWidth="240.0" prefWidth="240.0" spacing="20.0">
+<BorderPane fx:id="root" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.GameController">
+   <right>
+      <VBox maxWidth="240.0" minWidth="240.0" prefWidth="240.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <HBox>
                <children>
@@ -33,7 +27,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NULL" fx:id="currPlayerText">
+                  <Text fx:id="currPlayerText" strokeType="OUTSIDE" strokeWidth="0.0" text="NULL">
                      <font>
                         <Font name="Berlin Sans FB" size="20.0" />
                      </font>
@@ -50,14 +44,14 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" fx:id="whitePlayerScoreText">
+                  <Text fx:id="whitePlayerScoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
                         <Font name="Berlin Sans FB" size="20.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Black player score:" textAlignment="CENTER">
                      <font>
@@ -67,7 +61,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="0" fx:id="blackPlayerScoreText">
+                  <Text fx:id="blackPlayerScoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
                         <Font name="Berlin Sans FB" size="20.0" />
                      </font>
@@ -75,6 +69,19 @@
                </children>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
       </VBox>
-   </children>
-</HBox>
+   </right>
+   <center>
+      <GridPane fx:id="board" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="BOTTOM_CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+   <top>
+      <Pane maxHeight="10.0" minHeight="10.0" prefHeight="10.0" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>

@@ -13,9 +13,9 @@ import java.util.HashSet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 
 import reversi.Board;
 import reversi.GUIAdapter;
@@ -27,7 +27,7 @@ import reversi.Point;
  */
 public class GameController implements Initializable{
     @FXML
-    private HBox root;
+    private BorderPane root;
     
     @FXML
     private GridPane board;
@@ -48,7 +48,6 @@ public class GameController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         boardController = new BoardController();
-        boardController.setPadding(new Insets(10, 10, 10, 10));
         boardController.setPrefHeight(500);
         boardController.setPrefWidth(500);
         board.getChildren().add(0, boardController);
@@ -69,16 +68,13 @@ public class GameController implements Initializable{
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 240 - 20;
             boardController.setPrefWidth(boardNewWidth);
-            boardController.setPadding(new Insets(10, 10, 10, 10));
-            boardController.draw();
         });
         
         root.heightProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewHeight = newValue.doubleValue() - 20;
             boardController.setPrefHeight(boardNewHeight);
-            boardController.setPadding(new Insets(10, 10, 10, 10));
-            boardController.draw();
         });
+        
     }
     
     public void redraw(Board b) {
