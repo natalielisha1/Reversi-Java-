@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="527.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.SettingsFXMLController">
+<VBox fx:id="settings" prefHeight="656.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.SettingsFXMLController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -39,28 +39,40 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Player:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Player:" wrappingWidth="194.3056640625">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="AR JULIAN" size="25.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets left="8.0" />
+                     </GridPane.margin>
                   </Text>
-                  <ChoiceBox fx:id="startingPlayerChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="White Player's Disk:" GridPane.rowIndex="1">
+                  <ChoiceBox fx:id="startingPlayerChoice" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="183.0" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="White Player's Disk:" wrappingWidth="192.05859375" GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="AR JULIAN" size="25.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets left="8.0" />
+                     </GridPane.margin>
                   </Text>
-                  <ChoiceBox fx:id="whitePlayerChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Black Player's Disk:" GridPane.rowIndex="2">
+                  <ChoiceBox fx:id="whitePlayerChoice" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Black Player's Disk:" wrappingWidth="193.298828125" GridPane.rowIndex="2">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="AR JULIAN" size="25.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets left="8.0" />
+                     </GridPane.margin>
                   </Text>
                   <ChoiceBox fx:id="blackPlayerChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Board Size:" GridPane.rowIndex="3">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="AR JULIAN" size="25.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets left="8.0" />
+                     </GridPane.margin>
                   </Text>
                   <ChoiceBox fx:id="boardSizeChoice" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <ImageView fx:id="whitePlayerDiskImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -75,12 +87,12 @@
             <Insets />
          </VBox.margin>
          <bottom>
-            <Button fx:id="saveBtn" mnemonicParsing="false" text="Save and Exit" BorderPane.alignment="CENTER">
+            <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" text="Save and Exit" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="50.0" />
                </BorderPane.margin>
                <font>
-                  <Font size="26.0" />
+                  <Font name="AR ESSENCE" size="28.0" />
                </font>
             </Button>
          </bottom>

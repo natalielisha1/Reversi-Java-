@@ -10,12 +10,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="menuRoot" stylesheets="@../css/menu.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.MenuFXMLController">
+<VBox fx:id="menuRoot" prefHeight="576.0" prefWidth="508.0" stylesheets="@../css/menu.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.MenuFXMLController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane prefHeight="526.0" prefWidth="459.0">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="REVERSI GAME" textAlignment="CENTER" wrappingWidth="458.29296875">
+                     <font>
+                        <Font name="AR DARLING" size="61.0" />
+                     </font>
+                  </Text>
                   <Button fx:id="startGameBtn" mnemonicParsing="false" onAction="#startGame" prefHeight="42.0" prefWidth="179.0" text="START GAME">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="16.0" />
@@ -37,33 +42,24 @@
                </padding>
             </VBox>
          </center>
-         <bottom>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Text cache="true" fill="#114302" lineSpacing="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" text="developed by OS and NE" textAlignment="CENTER" wrappingWidth="83.81698441505432">
-                           <font>
-                              <Font name="Berlin Sans FB" size="12.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="52.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../res/reversiii.jpg" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-         </bottom>
-         <top>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="REVERSI GAME" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="AR DARLING" size="61.0" />
-               </font>
-            </Text>
-         </top>
       </BorderPane>
+      <HBox prefHeight="100.0" prefWidth="508.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text cache="true" fill="WHITE" lineSpacing="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" text="developed by OS and NE" textAlignment="CENTER" wrappingWidth="83.81698441505432">
+                     <font>
+                        <Font name="Berlin Sans FB" size="12.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="52.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../res/reversiii.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </VBox>
