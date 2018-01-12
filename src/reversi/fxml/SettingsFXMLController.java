@@ -1,6 +1,10 @@
 package reversi.fxml;
+
 import java.net.URL;
+
 import java.util.ResourceBundle;
+import java.util.ArrayList;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 import reversi.Cell;
 import reversi.GameSettings;
 import reversi.ODiskColor;
@@ -25,16 +30,16 @@ import reversi.XDiskColor;
 public class SettingsFXMLController implements Initializable {
 	
     @FXML
-    private ChoiceBox startingPlayerChoice;
+    private ChoiceBox<String> startingPlayerChoice;
 
     @FXML
-    private ChoiceBox whitePlayerChoice;
+    private ChoiceBox<String> whitePlayerChoice;
 
     @FXML
-    private ChoiceBox blackPlayerChoice;
+    private ChoiceBox<String> blackPlayerChoice;
 
     @FXML
-    private ChoiceBox boardSizeChoice;
+    private ChoiceBox<String> boardSizeChoice;
 
     @FXML
     private ImageView whitePlayerDiskImage;
@@ -80,7 +85,9 @@ public class SettingsFXMLController implements Initializable {
         });
         blackPlayerDiskImage.setImage(gameSettings.getXColor().getDisk());
         
-        boardSizeChoice.setItems(FXCollections.observableArrayList(4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20));
+        ArrayList<String> availableBoardSizes = gameSettings.availableBoardSizes();
+        
+        boardSizeChoice.setItems(FXCollections.observableArrayList(availableBoardSizes));
         boardSizeChoice.getSelectionModel().select(gameSettings.getBoardSize() - 4);
         
         saveBtn.setOnAction((event) -> {
@@ -92,7 +99,7 @@ public class SettingsFXMLController implements Initializable {
             }
             gameSettings.setOColor(ODiskColor.getEnum((String) whitePlayerChoice.getValue()));
             gameSettings.setXColor(XDiskColor.getEnum((String) blackPlayerChoice.getValue()));
-            gameSettings.setBoardSize((Integer)boardSizeChoice.getValue());
+            gameSettings.setBoardSize(Integer.parseInt((String) boardSizeChoice.getValue()));
             gameSettings.saveToFile();
             returnToMenu();
         });

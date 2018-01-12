@@ -15,3 +15,5 @@ In the game, we have used several images, and the credits go out to:
 * revesiii.png:			https://www.hrkgame.com/en/games/product/reversi/
 * greenBackground.jpg:	https://hdwallsource.com/green-background-21869.html
 * Complete.jpg:			https://www.codeproject.com/Articles/594188/ReversiEight-A-Windows-Reversi-Game
+* Yellow Umbrella:		http://www.clipartpanda.com/clipart_images/yellow-umbrella-black-handle-34251159
+* Blue French Horn:		TheBurnsWalker from blenderartists.org

@@ -49,6 +49,18 @@ public enum XDiskColor {
             return "Robin Scherbatsky";
         }
     },
+	YellowUmbrella {
+		@Override
+		public String toString() {
+			return "Yellow Umbrella";
+		}
+	},
+	BlueFrenchHorn {
+		@Override
+		public String toString() {
+			return "Blue French Horn";
+		}
+	},
     PurpleFlower {
         @Override
         public String toString() {
@@ -76,6 +88,8 @@ public enum XDiskColor {
             case LilyAldrin:        return new Image(getClass().getResourceAsStream("res/LilyAldrinBlackDisk.png"));
             case MarshallErikson:   return new Image(getClass().getResourceAsStream("res/MarshallEriksonBlackDisk.png"));
             case RobinScherbatsky:  return new Image(getClass().getResourceAsStream("res/RobinScherbatskyBlackDisk.png"));
+			case YellowUmbrella:    return new Image(getClass().getResourceAsStream("res/YellowUmbrellaBlackDisk.png"));
+			case BlueFrenchHorn:    return new Image(getClass().getResourceAsStream("res/BlueFrenchHornBlackDisk.png"));
             case PurpleFlower:      return new Image(getClass().getResourceAsStream("res/PurpleFlowerBlackDisk.png"));
             case CPU:               return new Image(getClass().getResourceAsStream("res/CPUBlackDisk.png"));
             case JavaLogo:          return new Image(getClass().getResourceAsStream("res/JavaLogoBlackDisk.png"));
@@ -92,6 +106,8 @@ public enum XDiskColor {
             case LilyAldrin:        return new Image(getClass().getResourceAsStream("res/LilyAldrinBlackDiskCell.png"));
             case MarshallErikson:   return new Image(getClass().getResourceAsStream("res/MarshallEriksonBlackDiskCell.png"));
             case RobinScherbatsky:  return new Image(getClass().getResourceAsStream("res/RobinScherbatskyBlackDiskCell.png"));
+			case YellowUmbrella:    return new Image(getClass().getResourceAsStream("res/YellowUmbrellaBlackDiskCell.png"));
+			case BlueFrenchHorn:    return new Image(getClass().getResourceAsStream("res/BlueFrenchHornBlackDiskCell.png"));
             case PurpleFlower:      return new Image(getClass().getResourceAsStream("res/PurpleFlowerBlackDiskCell.png"));
             case CPU:               return new Image(getClass().getResourceAsStream("res/CPUBlackDiskCell.png"));
             case JavaLogo:          return new Image(getClass().getResourceAsStream("res/JavaLogoBlackDiskCell.png"));
@@ -108,6 +124,8 @@ public enum XDiskColor {
             case "Lily Aldrin":         return LilyAldrin;
             case "Marshall Erikson":    return MarshallErikson;
             case "Robin Scherbatsky":   return RobinScherbatsky;
+			case "Yellow Umbrella":     return YellowUmbrella;
+			case "Blue French Horn":    return BlueFrenchHorn;
             case "Purple Flower":       return PurpleFlower;
             case "CPU":                 return CPU;
             case "Java Logo":           return JavaLogo;

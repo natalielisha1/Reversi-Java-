@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  *
@@ -100,5 +101,13 @@ public class GameSettings {
     
     public void setBoardSize(int newSize) {
         _boardSize = newSize;
+    }
+
+    public ArrayList<String> availableBoardSizes() {
+        ArrayList<String> toReturn = new ArrayList<>();
+        for (int i = 4; i <= 20; i++) {
+            toReturn.add(Integer.toString(i));
+        }
+        return toReturn;
     }
 }
