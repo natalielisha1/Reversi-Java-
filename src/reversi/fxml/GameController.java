@@ -5,17 +5,23 @@
  */
 package reversi.fxml;
 
+import java.io.IOException;
 import java.net.URL;
 
 import java.util.ResourceBundle;
 import java.util.HashSet;
+import javafx.application.Platform;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import reversi.Board;
 import reversi.GUIAdapter;
@@ -95,5 +101,19 @@ public class GameController implements Initializable{
     
     public void markOptions(HashSet<Point> options) {
         boardController.markOptions(options);
+    }
+
+    public void returnToMenu() {
+        try {
+            FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("MenuFXML.fxml"));
+            Parent menuParent = menuLoader.load();
+            Scene menuScene = new Scene(menuParent);
+            Stage theStage = (Stage) root.getScene().getWindow();
+            theStage.setScene(menuScene);
+        }   catch (IOException ex) {
+            //Weird Error - if happens -> debug
+            System.out.println("ReturnToMenu error:");
+            ex.printStackTrace();
+        }
     }
 }

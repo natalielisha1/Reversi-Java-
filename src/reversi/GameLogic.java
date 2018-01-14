@@ -48,4 +48,6 @@ public interface GameLogic {
     public GameStatus checkWinning();
     
     public String boardToString();
+    
+    public boolean quickWinCheck();
 }

@@ -6,6 +6,7 @@ package reversi.fxml;
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -53,7 +54,7 @@ public class MenuFXMLController implements Initializable {
             Scene settingsScene = new Scene(settingsParent);
             Stage theStage = (Stage) settingsBtn.getScene().getWindow();
             theStage.setScene(settingsScene);
-        }   catch (Exception ex) {
+        }   catch (IOException ex) {
             //Weird Error - if happens -> debug
             System.out.println("ChangeSettings error:");
             ex.printStackTrace();

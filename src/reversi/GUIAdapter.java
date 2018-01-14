@@ -10,6 +10,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import java.util.HashSet;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import reversi.fxml.GameController;
 
@@ -118,15 +121,19 @@ public class GUIAdapter {
     
     public void infoAlert(String title, String content) {
         if (_isGUI) {
-            Platform.runLater(new Runnable(){
-                @Override
-                public void run() {
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle(title);
-                    alert.setContentText(content);
-                    alert.showAndWait();
-                }
+            Semaphore waiter = new Semaphore(0);
+            Platform.runLater(() -> {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle(title);
+                alert.setContentText(content);
+                alert.showAndWait();
+                waiter.release();
             });
+            try {
+                waiter.acquire();
+            } catch (InterruptedException ex) {
+                //The game has stopped, so cancel
+            }
         }
     }
     
@@ -139,6 +146,12 @@ public class GUIAdapter {
     public void stop() {
         synchronized (_lock) {
             _lock.notifyAll();
+        }
+    }
+    
+    public void endGUI() {
+        if (_isGUI && _controller != null) {
+            Platform.runLater(() -> _controller.returnToMenu());
         }
     }
 }

@@ -162,6 +162,14 @@ public class ReversiLogic implements GameLogic {
         return _gameBoard.toString();
     }
     
+    @Override
+    public boolean quickWinCheck() {
+        int xNumber = _xLocations.size();
+        int oNumber = _oLocations.size();
+        
+        return (xNumber + oNumber) == Math.pow(_gameBoard.getBoardSize(),2);
+    }
+    
     private void initBoard() {
         int middle = _gameBoard.getBoardSize()/2 -1;
         Point[] firstXLocations = new Point[] {new Point(middle, middle + 1),

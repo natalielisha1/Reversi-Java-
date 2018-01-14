@@ -187,6 +187,21 @@ public class Game {
             //Showing the options (GUI Only!)
             _adapter.markOptions(tempOptions);
             
+            //If there are no options and the board is full - the game is over
+            if (tempOptions.isEmpty() && _logic.quickWinCheck()) {
+                _status = _logic.checkWinning();
+                break;
+            }
+            
+            /*
+             * If there are no options and the other player didn't have options
+             * then the game is over
+             */
+            if (tempOptions.isEmpty() && toCheckOther) {
+                _status = _logic.checkWinning();
+                break;
+            }
+            
             //Letting him choose
             move = thePlayers[currPlayer].makeMove(tempOptions);
             if (move.equals(END_GAME_POINT)) {
@@ -195,12 +210,7 @@ public class Game {
                 break;
             }
             if (move.equals(NO_MOVE_POINT)) {
-                if (toCheckOther) {
-                    _status = _logic.checkWinning();
-                    break;
-                } else {
-                    toCheckOther = true;
-                }
+                toCheckOther = true;
             } else {
                 //If he chose something, then it will be put
                 toCheckOther = false;
@@ -222,5 +232,8 @@ public class Game {
                             _oPlayer.sendMessage("It's a tie!");
                             break;
         }
+        
+        //Closing the GUI (GUI Only!)
+        _adapter.endGUI();
     }
 }
