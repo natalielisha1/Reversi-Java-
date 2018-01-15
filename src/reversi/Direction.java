@@ -6,8 +6,7 @@
 package reversi;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public enum Direction {
     Up,
@@ -20,8 +19,9 @@ public enum Direction {
     DownRight;
     
     /**
-     *
-     * @return
+     * The function returns the reversed direction
+     * of the current direction
+     * @return reversed direction
      */
     public Direction reverseDir() {
         switch (this) {
@@ -38,9 +38,10 @@ public enum Direction {
     }
     
     /**
-     *
-     * @param point
-     * @return
+     * The function returns the next point to the given point
+     * according to the current direction
+     * @param point - a point
+     * @return a point
      */
     public Point getPointFromDir(Point point) {
         switch (this) {

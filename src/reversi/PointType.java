@@ -6,13 +6,17 @@
 package reversi;
 
 /**
- *
- * @author OfekSegal
+ * @author Ofek Segal and Natalie Elisha 
  */
 public enum PointType {
     Board,
     Printable;
     
+    /**
+     * The function returns the reverse PointType
+     * to the current PointType
+     * @return reversed PointType
+     */
     public PointType reverse() {
         switch (this) {
             case Board:     return Printable;

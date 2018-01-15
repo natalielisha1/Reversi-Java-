@@ -14,8 +14,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
- *
- * @author ofek_and_natalie
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class ReversiJava extends Application {
     

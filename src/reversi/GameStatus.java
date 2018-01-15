@@ -6,8 +6,7 @@
 package reversi;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public enum GameStatus {
     NotPlaying,

@@ -12,8 +12,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
- *
- * @author OfekSegal
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class GameSettings {
     //The Singleton instance

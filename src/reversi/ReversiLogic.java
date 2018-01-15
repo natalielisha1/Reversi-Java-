@@ -10,8 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- *
- * @author OfekSegal
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class ReversiLogic implements GameLogic {
     
@@ -24,7 +23,7 @@ public class ReversiLogic implements GameLogic {
      * Creates a new ReversiLogic
      * object with board with the
      * specified size
-     * @param boardSize the size for the board
+     * @param boardSize - the size for the board
      */
     public ReversiLogic(int boardSize) {
         _gameBoard = new Board(boardSize);
@@ -49,7 +48,7 @@ public class ReversiLogic implements GameLogic {
      * Calculating the available
      * moves for player with cell type =
      * cell
-     * @param cell the player's cell type
+     * @param cell - the player's cell type
      * @return the set of possible moves
      */
     @Override
@@ -80,10 +79,11 @@ public class ReversiLogic implements GameLogic {
     }
 
     /**
-     *
-     * @param point
-     * @param cell
-     * @return
+     * The function puts the given cell type
+     * in the given point on the board
+     * @param point - a point
+     * @param cell - a cell type
+     * @return true if succeeded, otherwise false
      */
     @Override
     public boolean put(Point point, Cell cell) {

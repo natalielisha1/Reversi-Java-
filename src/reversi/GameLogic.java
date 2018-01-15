@@ -9,8 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public interface GameLogic {
 

@@ -6,8 +6,7 @@
 package reversi;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class Board {
     private static final int DEFAULT_SIZE = 8;
@@ -35,7 +34,7 @@ public class Board {
     /**
      * Creating a Board object
      * with the specified size
-     * @param size the size of the board
+     * @param size - the size of the board
      */
     public Board(int size) {
         _boardSize = size;
@@ -50,7 +49,7 @@ public class Board {
     
     /**
      * Copy constructor
-     * @param b the board to copy
+     * @param b - the board to copy
      */
     public Board(Board b) {
         _boardSize = b._boardSize;
@@ -92,8 +91,8 @@ public class Board {
     /**
      * Checking if the point is
      * on the board
-     * @param p the point the check
-     * @return the point is on the board or not
+     * @param p - the point to check
+     * @return true or false
      */
     public boolean pointExists(Point p) {
         return 0 <= p.getX() && p.getX() < _boardSize &&
@@ -103,8 +102,8 @@ public class Board {
     /**
      * Checking if the cell
      * in the point is Empty
-     * @param p the cell's location
-     * @return the point is Empty
+     * @param p - the cell's location (a point)
+     * @return true or false
      */
     public boolean isCellEmpty(Point p) {
         if (!pointExists(p)) {
@@ -115,9 +114,10 @@ public class Board {
     
     /**
      * Setting the cell's value
-     * @param p the cell's location
-     * @param playerType the new value
-     * @return the action succeeded
+     * @param p - the cell's location
+     * @param playerType - the new value
+     * @return true if the action succeeded,
+     * 		   otherwise false
      */
     public boolean setCell(Point p, Cell playerType) {
         if (!pointExists(p)) {
@@ -147,7 +147,7 @@ public class Board {
     
     /**
      * Returning the cell's value
-     * @param p the cell's location
+     * @param p - the cell's location
      * @return the cell's value
      */
     public Cell getCell(Point p) {
@@ -158,6 +158,11 @@ public class Board {
         return _theBoard[p.getX()][p.getY()];
     }
     
+    /**.
+     * The function returns a printable version
+     * of the board
+     * @return the board as a string
+     */
     @Override
     public String toString() {
         String toReturn = "";

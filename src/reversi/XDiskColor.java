@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 /**
- *
- * @author OfekSegal
+ * @author Ofek Segal and Natalie Elisha 
  */
 public enum XDiskColor {
     Black {

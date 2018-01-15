@@ -6,8 +6,7 @@
 package reversi;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public enum Cell {
     Empty,
@@ -15,8 +14,8 @@ public enum Cell {
     X;
     
     /**
-     *
-     * @return
+     * The function returns the adversary's cell type
+     * @return the opposite type
      */
     public Cell advCellType() {
         switch (this) {

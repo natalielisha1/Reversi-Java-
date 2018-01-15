@@ -9,8 +9,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class GUIPlayer implements Player{
     private Cell _type;

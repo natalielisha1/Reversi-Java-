@@ -8,8 +8,7 @@ package reversi;
 import java.util.HashSet;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class Game {
     public static final char HUMAN_PLAYER_IDENTIFIER = 'h';

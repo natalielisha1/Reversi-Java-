@@ -17,8 +17,7 @@ import java.util.logging.Logger;
 import reversi.fxml.GameController;
 
 /**
- *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha 
  */
 public class GUIAdapter {
     //The Singleton instance

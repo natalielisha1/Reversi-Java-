@@ -16,10 +16,13 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="REVERSI GAME" textAlignment="CENTER" wrappingWidth="458.29296875">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="REVERSI GAME" textAlignment="CENTER" wrappingWidth="473.29296875">
                      <font>
-                        <Font name="AR DARLING" size="61.0" />
+                        <Font name="AR DARLING" size="89.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
                   </Text>
                   <Button fx:id="startGameBtn" mnemonicParsing="false" onAction="#startGame" prefHeight="42.0" prefWidth="179.0" text="START GAME">
                      <font>
