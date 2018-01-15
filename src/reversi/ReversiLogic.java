@@ -118,8 +118,10 @@ public class ReversiLogic implements GameLogic {
     }
     
     /**
-     *
-     * @return
+     * The function returns a hash map that
+     * contains the quantities of the cells
+     * for the O player, the X player and overall
+     * @return a hash map
      */
     @Override
     public HashMap<String, Integer> getQuantities() {
@@ -138,8 +140,9 @@ public class ReversiLogic implements GameLogic {
     }
 
     /**
-     *
-     * @return
+     * The function checks which player won
+     * and returns a game status accordingly
+     * @return a game status
      */
     @Override
     public GameStatus checkWinning() {
@@ -157,11 +160,21 @@ public class ReversiLogic implements GameLogic {
         }
     }
     
+    /**
+     * The function returns a toString version
+     * of the game board
+     * @return a string that represents the game board
+     */
     @Override
     public String boardToString() {
         return _gameBoard.toString();
     }
     
+    /**
+     * The function checks quickly if the game
+     * has ended, if there's a winner
+     * @return true if there's a winner, otherwise false
+     */
     @Override
     public boolean quickWinCheck() {
         int xNumber = _xLocations.size();
@@ -170,6 +183,9 @@ public class ReversiLogic implements GameLogic {
         return (xNumber + oNumber) == Math.pow(_gameBoard.getBoardSize(),2);
     }
     
+    /**
+     * The function maintains the game board's properties
+     */
     private void initBoard() {
         int middle = _gameBoard.getBoardSize()/2 -1;
         Point[] firstXLocations = new Point[] {new Point(middle, middle + 1),
@@ -189,6 +205,14 @@ public class ReversiLogic implements GameLogic {
         _adapter.changeWhitePlayerScore(_gameBoard.getOCount());
     }
     
+    /**
+     * The function checks if the move from the given point
+     * to the given direction is available (empty)
+     * @param playerType - the cell type of the player
+     * @param point - a point in board
+     * @param dir - a direction
+     * @return true if available, otherwise false
+     */
     private boolean checkMoveEmpty(Cell playerType, Point point, Direction dir) {
         if (!_gameBoard.pointExists(point)) {
             return false;
@@ -202,6 +226,14 @@ public class ReversiLogic implements GameLogic {
         }
     }
     
+    /**
+     * The function checks if a move in the given direction is
+     * possible to make
+     * @param playerType - the cell type of the player
+     * @param point - a point in board
+     * @param dir - a direction
+     * @return true if possible, otherwise false
+     */
     private boolean checkMove(Cell playerType, Point point, Direction dir) {
         if (!_gameBoard.pointExists(point)) {
             return false;
@@ -216,6 +248,15 @@ public class ReversiLogic implements GameLogic {
         }
     }
     
+    /**
+     * The function tries to add the point to the locations
+     * of the player who owns the given locations
+     * @param cell - a cell type of the player
+     * @param point - a point in board
+     * @param dir - a direction
+     * @param tempLocations - hash set of points the player has
+     * @return true if succeeded, otherwise false
+     */
     private boolean tryToPut(Cell cell, Point point, Direction dir, HashSet<Point> tempLocations) {
         if (!_gameBoard.pointExists(point)) {
             return false;

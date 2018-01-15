@@ -17,18 +17,37 @@ public class GUIPlayer implements Player{
     
     private final GUIAdapter _adapter;
     
+    /**
+     * Constructor for GUIPlayer object using a type
+     * of cell that bound to the player
+     * @param type - a type of cell
+     */
     public GUIPlayer(Cell type) {
         _type = type;
         _toPrint = true;
         _adapter = GUIAdapter.getInstance(true);
     }
     
+    /**
+     * Constructor for GUIPlayer object using a type
+     * of cell that bound to the player and a boolean
+     * value that says if the player should send a message
+     * to print for the alert
+     * @param type - a type of cell
+     * @param toPrint - a boolean value
+     */
     public GUIPlayer(Cell type, boolean toPrint) {
         _type = type;
         _toPrint = toPrint;
         _adapter = GUIAdapter.getInstance(true);
     }
 
+    /**
+     * The function plays the player's move
+     * according to the given options
+     * @param options - hash set of points
+     * @return the move as a point
+     */
     @Override
     public Point makeMove(HashSet<Point> options) {
         if (options.isEmpty()) {
@@ -47,6 +66,10 @@ public class GUIPlayer implements Player{
         return currPoint;
     }
 
+    /**
+     * The function sends the given message to the player
+     * @param message - a string
+     */
     @Override
     public void sendMessage(String message) {
         if (_toPrint) {
@@ -60,16 +83,29 @@ public class GUIPlayer implements Player{
         }
     }
 
+    /**
+     * The function returns the player's cell type
+     * @return type of cell
+     */
     @Override
     public Cell getType() {
         return _type;
     }
 
+    /**
+     * The function sets the cell type of the player
+     * @param newType - a new cell type
+     */
     @Override
     public void setType(Cell newType) {
         _type = newType;
     }
     
+    /**
+     * The function returns the toString version
+     * of the player's cell
+     * @return a string
+     */
     @Override
     public String toString() {
         switch (_type) {

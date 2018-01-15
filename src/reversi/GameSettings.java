@@ -27,6 +27,9 @@ public class GameSettings {
     
     private int _boardSize;
     
+    /**
+     * Constructor function for GameSettings
+     */
     private GameSettings() {
         _startingPlayer = Cell.X;
         _xPlayerColor = XDiskColor.Black;
@@ -34,6 +37,11 @@ public class GameSettings {
         _boardSize = 8;
     }
     
+    /**
+     * The function loads the game settings instance
+     * and returns it (in case it hadn't been loaded)
+     * @return a game settings instance
+     */
     public static GameSettings getInstance() {
         if (_instance == null) {
             _instance = loadFromFile();
@@ -41,6 +49,11 @@ public class GameSettings {
         return _instance;
     }
     
+    /**
+     * The function loads the game settings from
+     * the settings file
+     * @return a game settings instance
+     */
     private static GameSettings loadFromFile() {
         try (FileReader file = new FileReader(SETTINGS_FILE_NAME);
              BufferedReader reader = new BufferedReader(file)) {
@@ -55,6 +68,10 @@ public class GameSettings {
         }
     }
 
+    /**
+     * The function checks the validation of the
+     * settings file by printing it's properties
+     */
     public void saveToFile() {
         try (FileWriter file = new FileWriter(SETTINGS_FILE_NAME);
              PrintWriter printer = new PrintWriter(file)) {
@@ -70,38 +87,84 @@ public class GameSettings {
         }
     }
     
+    /**
+     * The function returns the starting player
+     * of the game
+     * @return the type of cell of the starting player
+     * @param 
+     */
     public Cell getStartingPlayer() {
         return _startingPlayer;
     }
     
+    /**
+     * The function sets the starting player
+     * of the game
+     * @param newStarting - the type of cell
+     * 						of the new starting player
+     */
     public void setStartingPlayer(Cell newStarting) {
         _startingPlayer = newStarting;
     }
     
+    /**
+     * The function returns the disk color of the
+     * X player in the game
+     * @return a color
+     */
     public XDiskColor getXColor() {
         return _xPlayerColor;
     }
     
+    /**
+     * The function sets the color of the X player's
+     * disk
+     * @param newColor - a new color for the disk
+     */
     public void setXColor(XDiskColor newColor) {
         _xPlayerColor = newColor;
     }
     
+    /**
+     * The function returns the disk color of
+     * the O player in the game
+     * @return a color
+     */
     public ODiskColor getOColor() {
         return _oPlayerColor;
     }
     
+    /**
+     * The function sets the color of the O player's
+     * disk
+     * @param newColor - a new color for a disk
+     */
     public void setOColor(ODiskColor newColor) {
         _oPlayerColor = newColor;
     }
     
+    /**
+     * The function returns the game board's size
+     * @return size of board
+     */
     public int getBoardSize() {
         return _boardSize;
     }
     
+    /**
+     * The function sets the size of the game
+     * board
+     * @param newSize - an integer 
+     */
     public void setBoardSize(int newSize) {
         _boardSize = newSize;
     }
 
+    /**
+     * The function returns the available sizes
+     * of the game board
+     * @return an array list of strings
+     */
     public ArrayList<String> availableBoardSizes() {
         ArrayList<String> toReturn = new ArrayList<>();
         for (int i = 4; i <= 20; i++) {

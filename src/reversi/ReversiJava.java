@@ -18,6 +18,10 @@ import javafx.stage.Stage;
  */
 public class ReversiJava extends Application {
     
+    /**
+     * 
+     * @param 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         //The app's title

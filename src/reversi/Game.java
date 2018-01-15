@@ -31,6 +31,9 @@ public class Game {
     private Player _xPlayer;
     private Player _oPlayer;
     
+    /**
+     * Constructor for Game object
+     */
     public Game() {
         _settings = GameSettings.getInstance();
         
@@ -41,7 +44,13 @@ public class Game {
         _xPlayer = new GUIPlayer(Cell.X, true);
         _oPlayer = new GUIPlayer(Cell.O, false);
     }
-    
+
+    /**
+     * Constructor for Game object using x player and o player
+     * identifiers
+     * @param xPlayerIdentifier - identifier char for x player
+     * @param oPlayerIdentifier - identifier char for o player
+     */
     public Game(char xPlayerIdentifier, char oPlayerIdentifier) {
         _settings = GameSettings.getInstance();
         
@@ -111,6 +120,11 @@ public class Game {
         */
     }
     
+    /**
+     * Constructor for Game object using an existing
+     * game object
+     * @param g - a game
+     */
     public Game(Game g) {
         _settings = g._settings;
         
@@ -124,6 +138,9 @@ public class Game {
         _oPlayer = new BlankPlayer(Cell.O);
     }
     
+    /**
+     * The function runs the game
+     */
     public void run() {
         if (_status == GameStatus.NotPlaying) {
             _status = GameStatus.InProgress;
