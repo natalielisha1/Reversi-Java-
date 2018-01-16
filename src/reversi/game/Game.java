@@ -1,33 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.game;
 
 import java.util.HashSet;
+import reversi.game.players.BlankPlayer;
+import reversi.gui.GUIAdapter;
+import reversi.game.players.GUIPlayer;
+import reversi.gui.GameSettings;
+import reversi.game.players.Player;
 
 /**
  * @author Ofek Segal and Natalie Elisha 
  */
 public class Game {
+    //Player type identifiers
     public static final char HUMAN_PLAYER_IDENTIFIER = 'h';
     public static final char COMP_PLAYER_IDENTIFIER = 'c';
     public static final char BLANK_PLAYER_IDENTIFIER = 'b';
     public static final char REMOTE_PLAYER_IDENTIFIER = 'r';
     public static final char GUI_PLAYER_IDENTIFIER = 'g';
     
+    //Special points
     public static final Point END_GAME_POINT = new Point(-2, -2, PointType.Board);
     public static final Point NO_MOVE_POINT = new Point(-1, -1, PointType.Board);
     
+    //The game settings object
     private GameSettings _settings;
     
+    //The logic to use
     private GameLogic _logic;
     
+    //The current game status
     private GameStatus _status;
     
+    //A link to the GUI, without knowing exactly how the GUI works
     private GUIAdapter _adapter;
     
+    //The players
     private Player _xPlayer;
     private Player _oPlayer;
     
@@ -35,12 +42,19 @@ public class Game {
      * Constructor for Game object
      */
     public Game() {
+        //Getting the settings
         _settings = GameSettings.getInstance();
         
+        //Creating the logic
         _logic = new ReversiLogic(_settings.getBoardSize());
         
+        //Getting the link to the GUI
+        _adapter = GUIAdapter.getInstance();
+        
+        //Starting the game as "NotPlaying"
         _status = GameStatus.NotPlaying;
         
+        //The default here is GUI players
         _xPlayer = new GUIPlayer(Cell.X, true);
         _oPlayer = new GUIPlayer(Cell.O, false);
     }
@@ -48,32 +62,30 @@ public class Game {
     /**
      * Constructor for Game object using x player and o player
      * identifiers
-     * @param xPlayerIdentifier - identifier char for x player
-     * @param oPlayerIdentifier - identifier char for o player
+     * @param xPlayerIdentifier identifier char for x player
+     * @param oPlayerIdentifier identifier char for o player
      */
     public Game(char xPlayerIdentifier, char oPlayerIdentifier) {
+        //Getting the settings
         _settings = GameSettings.getInstance();
         
+        //Creating the logic
         _logic = new ReversiLogic(_settings.getBoardSize());
         
+        //Getting the link to the GUI
         _adapter = GUIAdapter.getInstance();
         
+        //Starting the game as "NotPlaying"
         _status = GameStatus.NotPlaying;
         
         switch (xPlayerIdentifier) {
             case GUI_PLAYER_IDENTIFIER:     _xPlayer = new GUIPlayer(Cell.X, true);
+                                            _adapter.setGUI(true);
                                             break;
             case BLANK_PLAYER_IDENTIFIER:   _xPlayer = new BlankPlayer(Cell.X);
                                             break;
-            /*
-            case HUMAN_PLAYER_IDENTIFIER:   _xPlayer = new HumanPlayer(Cell.X);
-                                            break;
-            case COMP_PLAYER_IDENTIFIER:    _xPlayer = new CompPlayer(Cell.X);
-                                            break;
-            case REMOTE_PLAYER_IDENTIFIER:  _xPlayer = new RemotePlayer(Cell.X);
-                                            break;
-            */
             default:                        _xPlayer = new GUIPlayer(Cell.X, true);
+                                            _adapter.setGUI(true);
                                             break;
 	}
         
@@ -83,47 +95,19 @@ public class Game {
                                             } else {
                                                 _oPlayer = new GUIPlayer(Cell.O, true);
                                             }
+                                            _adapter.setGUI(true);
                                             break;
             case BLANK_PLAYER_IDENTIFIER:   _oPlayer = new BlankPlayer(Cell.O);
                                             break;
-            /*
-            case HUMAN_PLAYER_IDENTIFIER:   _oPlayer = new HumanPlayer(Cell.O);
-                                            break;
-            case COMP_PLAYER_IDENTIFIER:    _oPlayer = new CompPlayer(Cell.O);
-                                            break;
-            
-            case REMOTE_PLAYER_IDENTIFIER:  _oPlayer = new RemotePlayer(Cell.O);
-                                            break;
-            */
             default:                        _oPlayer = new GUIPlayer(Cell.O);
+                                            _adapter.setGUI(true);
                                             break;
 	}
-        
-        /*
-        //If the server placed the players differently, swap them
-	if (xPlayerIdentifier == REMOTE_PLAYER_IDENTIFIER) {
-		if (_xPlayer.getType() == Cell.O) {
-			Player temp = _xPlayer;
-			_xPlayer = _oPlayer;
-			_xPlayer.setType(Cell.X);
-			_oPlayer = temp;
-		}
-	}
-	if (oPlayerIdentifier == REMOTE_PLAYER_IDENTIFIER) {
-		if (_oPlayer.getType() == Cell.X) {
-			Player temp = _oPlayer;
-			_oPlayer = _xPlayer;
-			_oPlayer.setType(Cell.O);
-			_xPlayer = temp;
-		}
-	}
-        */
     }
     
     /**
-     * Constructor for Game object using an existing
-     * game object
-     * @param g - a game
+     * Copy Constructor for Game object
+     * @param g a game
      */
     public Game(Game g) {
         _settings = g._settings;
@@ -134,17 +118,20 @@ public class Game {
         
         _status = g._status;
         
+        /*
+         * The new game should be with "Blank" players, so it won't disturb the
+         * current game
+         */
         _xPlayer = new BlankPlayer(Cell.X);
         _oPlayer = new BlankPlayer(Cell.O);
     }
     
     /**
-     * The function runs the game
+     * The function that runs the game
      */
     public void run() {
-        if (_status == GameStatus.NotPlaying) {
-            _status = GameStatus.InProgress;
-        }
+        //Changing the status
+        _status = GameStatus.InProgress;
         
         //Temp variables to use later
         boolean toCheckOther = false;

@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.gui;
 
+import reversi.game.Cell;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,8 +14,10 @@ public class GameSettings {
     //The Singleton instance
     private static GameSettings _instance = null;
     
+    //The settings file name
     private final static String SETTINGS_FILE_NAME = "settings.ond";
     
+    //The settings variables
     private Cell _startingPlayer;
     
     private XDiskColor _xPlayerColor;
@@ -69,8 +67,7 @@ public class GameSettings {
     }
 
     /**
-     * The function checks the validation of the
-     * settings file by printing it's properties
+     * The function saving the settings to the file
      */
     public void saveToFile() {
         try (FileWriter file = new FileWriter(SETTINGS_FILE_NAME);
@@ -91,7 +88,6 @@ public class GameSettings {
      * The function returns the starting player
      * of the game
      * @return the type of cell of the starting player
-     * @param 
      */
     public Cell getStartingPlayer() {
         return _startingPlayer;
@@ -100,8 +96,7 @@ public class GameSettings {
     /**
      * The function sets the starting player
      * of the game
-     * @param newStarting - the type of cell
-     * 						of the new starting player
+     * @param newStarting the starting player
      */
     public void setStartingPlayer(Cell newStarting) {
         _startingPlayer = newStarting;
@@ -119,7 +114,7 @@ public class GameSettings {
     /**
      * The function sets the color of the X player's
      * disk
-     * @param newColor - a new color for the disk
+     * @param newColor a new color for the disk
      */
     public void setXColor(XDiskColor newColor) {
         _xPlayerColor = newColor;
@@ -137,7 +132,7 @@ public class GameSettings {
     /**
      * The function sets the color of the O player's
      * disk
-     * @param newColor - a new color for a disk
+     * @param newColor a new color for a disk
      */
     public void setOColor(ODiskColor newColor) {
         _oPlayerColor = newColor;

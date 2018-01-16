@@ -1,19 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.game;
 
 /**
  * @author Ofek Segal and Natalie Elisha 
  */
 public class Board {
+    //The default size
     private static final int DEFAULT_SIZE = 8;
     
-    private Cell[][] _theBoard;
+    //The cell matrix
+    private final Cell[][] _theBoard;
+    
+    //The real size
     private final int _boardSize;
+    
+    //The number of x cells in the matrix
     private int _xCount;
+    
+    //The number of o cells in the matrix
     private int _oCount;
     
     /**
@@ -34,7 +37,7 @@ public class Board {
     /**
      * Creating a Board object
      * with the specified size
-     * @param size - the size of the board
+     * @param size the size of the board
      */
     public Board(int size) {
         _boardSize = size;
@@ -49,7 +52,7 @@ public class Board {
     
     /**
      * Copy constructor
-     * @param b - the board to copy
+     * @param b the board to copy
      */
     public Board(Board b) {
         _boardSize = b._boardSize;
@@ -91,7 +94,7 @@ public class Board {
     /**
      * Checking if the point is
      * on the board
-     * @param p - the point to check
+     * @param p the point to check
      * @return true or false
      */
     public boolean pointExists(Point p) {
@@ -102,7 +105,7 @@ public class Board {
     /**
      * Checking if the cell
      * in the point is Empty
-     * @param p - the cell's location (a point)
+     * @param p the cell's location (a point)
      * @return true or false
      */
     public boolean isCellEmpty(Point p) {
@@ -114,7 +117,7 @@ public class Board {
     
     /**
      * Setting the cell's value
-     * @param p - the cell's location
+     * @param p the cell's location
      * @param playerType - the new value
      * @return true if the action succeeded,
      * 		   otherwise false
@@ -147,7 +150,7 @@ public class Board {
     
     /**
      * Returning the cell's value
-     * @param p - the cell's location
+     * @param p the cell's location
      * @return the cell's value
      */
     public Cell getCell(Point p) {

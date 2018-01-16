@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reversi;
+package reversi.game.players;
+import reversi.game.Cell;
+import reversi.game.Point;
 import java.util.HashSet;
 
 /**
@@ -14,7 +16,7 @@ public class BlankPlayer implements Player{
     
     /**.
      * The function creates an instance of BlankPlayer
-     * @param type - cell type
+     * @param type cell type
      */
     public BlankPlayer(Cell type) {
         _type = type;
@@ -22,7 +24,7 @@ public class BlankPlayer implements Player{
     
     /**.
      * The function returns a negligible point
-     * @param opions - hash set of points
+     * @param options set of available moves
      * @return point
      */
     @Override
@@ -32,7 +34,7 @@ public class BlankPlayer implements Player{
 
     /**.
      * Currently, the function does nothing
-     * @param message - string
+     * @param message string
      */
     @Override
     public void sendMessage(String message) {
@@ -51,7 +53,7 @@ public class BlankPlayer implements Player{
     /**.
      * The function sets the type of the cell of
      * the blank player
-     * @param newType - new type of cell
+     * @param newType new type of cell
      */
     @Override
     public void setType(Cell newType) {

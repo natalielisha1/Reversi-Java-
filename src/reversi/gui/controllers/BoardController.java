@@ -1,6 +1,12 @@
-package reversi.fxml;
+package reversi.gui.controllers;
 
-import reversi.*;
+import java.io.IOException;
+import reversi.gui.GameSettings;
+import reversi.gui.GUIAdapter;
+import reversi.game.Cell;
+import reversi.game.PointType;
+import reversi.game.Point;
+import reversi.game.Board;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -10,33 +16,50 @@ import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 
 import java.util.HashSet;
-import javafx.geometry.Insets;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
 
+/**
+ *
+ * @author Ofek Segal and Natalie Elisha
+ */
 public class BoardController extends GridPane {
+    //The game settings
     private final GameSettings gameSettings;
+    
+    //The link to the GUI adapter
     private final GUIAdapter adapter;
     
+    //The cells matrix
     private final ImageView[][] theCells;
+    
+    //The board's size
     private final int theSize;
     
+    //The last drawn board
     private Board lastBoard;
 
+    /**
+     * BoardController constructor
+     */
     public BoardController() {
+        //Getting the game settings
         gameSettings = GameSettings.getInstance();
+        
+        //Getting the GUI adapter
         adapter = GUIAdapter.getInstance(true);
         
+        //Getting the board's size
         theSize = gameSettings.getBoardSize();
+        
+        //Setting the cells matrix
         theCells = new ImageView[theSize][theSize];
         
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BoardFXML.fxml"));
+        //Loading the fxml
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("reversi/gui/fxml/BoardFXML.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             //Weird exception - if happens -> debug
             System.out.println("BoardController error:");
             ex.printStackTrace();
@@ -50,14 +73,14 @@ public class BoardController extends GridPane {
             for (int j = 0; j < theSize; j++) {
                 final int row = i;
                 final int col = j;
-                theCells[i][j] = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/BlankCell.png")));
+                theCells[i][j] = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/BlankCell.png")));
                 
                 theCells[i][j].setPreserveRatio(false);
                 
                 theCells[i][j].fitHeightProperty().bind(this.prefHeightProperty().divide(theSize));
                 theCells[i][j].fitWidthProperty().bind(this.prefWidthProperty().divide(theSize));
                 
-                //Should find a way to do it without attaching a listener on every imageview
+                //Setting a "OnMouseClicked" event to each cell
                 theCells[i][j].setOnMouseClicked((MouseEvent event) -> {
                     Point newPoint = new Point(row, col, PointType.Board);
                     adapter.setPoint(newPoint);
@@ -67,12 +90,19 @@ public class BoardController extends GridPane {
         }
     }
     
+    /**
+     * Drawing the given board
+     * @param theBoard the board to draw on screen
+     */
     public void draw(Board theBoard) {
         lastBoard = theBoard;
         
         this.draw();
    }
     
+    /**
+     * Drawing the last given board
+     */
     public void draw() {
         if (lastBoard == null) {
             return;
@@ -86,39 +116,55 @@ public class BoardController extends GridPane {
                                 break;
                     case X:     theCells[i][j].setImage(gameSettings.getXColor().getCell());
                                 break;
-                    default:    theCells[i][j].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/BlankCell.png")));
+                    default:    theCells[i][j].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/BlankCell.png")));
                                 break;
                 }
             }
         }
     }
     
+    /**
+     * Marking the move options on the board
+     * @param options the move options
+     */
     public void markOptions(HashSet<Point> options) {
         for (Point option : options) {
+            /*
+             * Fixing a compatibility issue, from the Console
+             * display - the Console displayed the locations
+             * in the range [1,size], but the program
+             * uses the [0,size-1] range
+             */
             option.alignToBoard();
-            theCells[option.getX()][option.getY()].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/res/ReadyCell.png")));
+            
+            theCells[option.getX()][option.getY()].setImage(new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/ReadyCell.png")));
         }
     }
 
+    /**
+     * Calc'ing the point that was clicked
+     * @param event the mouse event
+     * @return the point that was clicked
+     */
     public Point calcMouseClick(MouseEvent event) {
-        double mouseX = event.getScreenX();
-        double mouseY = event.getScreenY();
+        double mouseX = event.getSceneX();
+        double mouseY = event.getSceneY();
         
-        Bounds boundsInScreen = this.localToScreen(this.getBoundsInLocal());
+        Bounds boundsInScence = this.localToScene(this.getBoundsInLocal());
         
-        int height = (int) boundsInScreen.getHeight();
-        int width = (int) boundsInScreen.getWidth();
+        int height = (int) boundsInScence.getHeight();
+        int width = (int) boundsInScence.getWidth();
         
         int cellHeight = height / theSize;
         int cellWidth = width / theSize;
         
-        double row = mouseX - boundsInScreen.getMinX();
+        double row = mouseX - boundsInScence.getMinX();
         row /= cellWidth;
         row = Math.abs(row);
         
         int intRow = (int) Math.ceil(row);
         
-        double col = mouseY - boundsInScreen.getMinY();
+        double col = mouseY - boundsInScence.getMinY();
         col /= cellHeight;
         col = Math.abs(col);
         

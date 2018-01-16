@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.game;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,26 +9,28 @@ import java.util.HashSet;
 public interface GameLogic {
 
     /**
-     * The function returns an array of
-     * available directions 
-     * @return an array of directions
+     * Getting a list of available
+     * directions to check for next
+     * move
+     * @return the list of directions
      */
     public Direction[] availableDirections();
     
     /**
-     * The function calculating the moves that are
-     * available for the player that holds the given
-     * cell type and returns them as a hash set of points
-     * @param cell - a type of cell
-     * @return a hash set of points
+     * Calculating the available
+     * moves for player with cell type =
+     * cell
+     * @param cell the player's cell type
+     * @return the set of possible moves
      */
     public HashSet<Point> calcMoves(Cell cell);
 
     /**
      * The function puts the given cell type
      * in the given point on the board
-     * @param point - a point
-     * @param cell - a cell type
+     * and changes all of the affected cells
+     * @param point a point
+     * @param cell a cell type
      * @return true if succeeded, otherwise false
      */
     public boolean put(Point point, Cell cell);
@@ -62,8 +59,8 @@ public interface GameLogic {
     
     /**
      * The function checks quickly if the game
-     * has ended, if there's a winner
-     * @return true if there's a winner, otherwise false
+     * has ended (only checking if the board is full)
+     * @return true if the game is over, otherwise false
      */
     public boolean quickWinCheck();
 }

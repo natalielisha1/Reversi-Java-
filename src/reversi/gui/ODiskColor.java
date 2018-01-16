@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.gui;
 
 import java.util.ArrayList;
 import javafx.scene.image.Image;
@@ -78,28 +73,28 @@ public enum ODiskColor {
             return "Robin Scherbatsky";
         }
     },
-	YellowUmbrella {
+    YellowUmbrella {
         /**
          * The function returns the toString version
          * of YellowUmbrella object
          * @return a string
          */
-		@Override
-		public String toString() {
-			return "Yellow Umbrella";
-		}
-	},
-	BlueFrenchHorn {
+        @Override
+        public String toString() {
+            return "Yellow Umbrella";
+        }
+    },
+    BlueFrenchHorn {
         /**
          * The function returns the toString version
          * of BlueFrenchHorn object
          * @return a string
          */
-		@Override
-		public String toString() {
-			return "Blue French Horn";
-		}
-	},
+        @Override
+        public String toString() {
+            return "Blue French Horn";
+        }
+    },
     PurpleFlower {
         /**
          * The function returns the toString version
@@ -140,19 +135,19 @@ public enum ODiskColor {
      */
     public Image getDisk() {
         switch (this) {
-            case White:             return new Image(getClass().getResourceAsStream("res/WhiteDisk.png"));
-            case TedMosby:          return new Image(getClass().getResourceAsStream("res/TedMosbyWhiteDisk.png"));
-            case BarneyStinson:     return new Image(getClass().getResourceAsStream("res/BarneyStinsonWhiteDisk.png"));
-            case LilyAldrin:        return new Image(getClass().getResourceAsStream("res/LilyAldrinWhiteDisk.png"));
-            case MarshallErikson:   return new Image(getClass().getResourceAsStream("res/MarshallEriksonWhiteDisk.png"));
-            case RobinScherbatsky:  return new Image(getClass().getResourceAsStream("res/RobinScherbatskyWhiteDisk.png"));
-			case YellowUmbrella:    return new Image(getClass().getResourceAsStream("res/YellowUmbrellaWhiteDisk.png"));
-			case BlueFrenchHorn:    return new Image(getClass().getResourceAsStream("res/BlueFrenchHornWhiteDisk.png"));
-            case PurpleFlower:      return new Image(getClass().getResourceAsStream("res/PurpleFlowerWhiteDisk.png"));
-            case CPU:               return new Image(getClass().getResourceAsStream("res/CPUWhiteDisk.png"));
-            case JavaLogo:          return new Image(getClass().getResourceAsStream("res/JavaLogoWhiteDisk.png"));
+            case White:             return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/WhiteDisk.png"));
+            case TedMosby:          return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/TedMosbyWhiteDisk.png"));
+            case BarneyStinson:     return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/BarneyStinsonWhiteDisk.png"));
+            case LilyAldrin:        return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/LilyAldrinWhiteDisk.png"));
+            case MarshallErikson:   return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/MarshallEriksonWhiteDisk.png"));
+            case RobinScherbatsky:  return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/RobinScherbatskyWhiteDisk.png"));
+            case YellowUmbrella:    return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/YellowUmbrellaWhiteDisk.png"));
+            case BlueFrenchHorn:    return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/BlueFrenchHornWhiteDisk.png"));
+            case PurpleFlower:      return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/PurpleFlowerWhiteDisk.png"));
+            case CPU:               return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/CPUWhiteDisk.png"));
+            case JavaLogo:          return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/JavaLogoWhiteDisk.png"));
             
-            default:                return new Image(getClass().getResourceAsStream("res/WhiteDisk.png"));
+            default:                return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/WhiteDisk.png"));
         }
     }
     
@@ -163,19 +158,19 @@ public enum ODiskColor {
      */
     public Image getCell() {
         switch (this) {
-            case White:             return new Image(getClass().getResourceAsStream("res/WhiteDiskCell.png"));
-            case TedMosby:          return new Image(getClass().getResourceAsStream("res/TedMosbyWhiteDiskCell.png"));
-            case BarneyStinson:     return new Image(getClass().getResourceAsStream("res/BarneyStinsonWhiteDiskCell.png"));
-            case LilyAldrin:        return new Image(getClass().getResourceAsStream("res/LilyAldrinWhiteDiskCell.png"));
-            case MarshallErikson:   return new Image(getClass().getResourceAsStream("res/MarshallEriksonWhiteDiskCell.png"));
-            case RobinScherbatsky:  return new Image(getClass().getResourceAsStream("res/RobinScherbatskyWhiteDiskCell.png"));
-			case YellowUmbrella:    return new Image(getClass().getResourceAsStream("res/YellowUmbrellaWhiteDiskCell.png"));
-			case BlueFrenchHorn:    return new Image(getClass().getResourceAsStream("res/BlueFrenchHornWhiteDiskCell.png"));
-            case PurpleFlower:      return new Image(getClass().getResourceAsStream("res/PurpleFlowerWhiteDiskCell.png"));
-            case CPU:               return new Image(getClass().getResourceAsStream("res/CPUWhiteDiskCell.png"));
-            case JavaLogo:          return new Image(getClass().getResourceAsStream("res/JavaLogoWhiteDiskCell.png"));
+            case White:             return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/WhiteDiskCell.png"));
+            case TedMosby:          return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/TedMosbyWhiteDiskCell.png"));
+            case BarneyStinson:     return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/BarneyStinsonWhiteDiskCell.png"));
+            case LilyAldrin:        return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/LilyAldrinWhiteDiskCell.png"));
+            case MarshallErikson:   return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/MarshallEriksonWhiteDiskCell.png"));
+            case RobinScherbatsky:  return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/RobinScherbatskyWhiteDiskCell.png"));
+            case YellowUmbrella:    return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/YellowUmbrellaWhiteDiskCell.png"));
+            case BlueFrenchHorn:    return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/BlueFrenchHornWhiteDiskCell.png"));
+            case PurpleFlower:      return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/PurpleFlowerWhiteDiskCell.png"));
+            case CPU:               return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/CPUWhiteDiskCell.png"));
+            case JavaLogo:          return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/JavaLogoWhiteDiskCell.png"));
             
-            default:                return new Image(getClass().getResourceAsStream("res/WhiteDiskCell.png"));
+            default:                return new Image(getClass().getClassLoader().getResourceAsStream("reversi/gui/res/WhiteDiskCell.png"));
         }
     }
     
@@ -193,8 +188,8 @@ public enum ODiskColor {
             case "Lily Aldrin":         return LilyAldrin;
             case "Marshall Erikson":    return MarshallErikson;
             case "Robin Scherbatsky":   return RobinScherbatsky;
-			case "Yellow Umbrella":     return YellowUmbrella;
-			case "Blue French Horn":    return BlueFrenchHorn;
+            case "Yellow Umbrella":     return YellowUmbrella;
+            case "Blue French Horn":    return BlueFrenchHorn;
             case "Purple Flower":       return PurpleFlower;
             case "CPU":                 return CPU;
             case "Java Logo":           return JavaLogo;

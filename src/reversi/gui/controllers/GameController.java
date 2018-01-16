@@ -1,35 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi.fxml;
+package reversi.gui.controllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 
 import java.util.ResourceBundle;
 import java.util.HashSet;
-import javafx.application.Platform;
+
+import javafx.event.EventHandler;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import reversi.Board;
-import reversi.GUIAdapter;
-import reversi.Point;
+import reversi.game.Board;
+import reversi.gui.GUIAdapter;
+import reversi.game.Point;
 
 /**
  *
- * @author ofek_
+ * @author Ofek Segal and Natalie Elisha
  */
 public class GameController implements Initializable{
     @FXML
@@ -51,25 +49,31 @@ public class GameController implements Initializable{
     
     private GUIAdapter adapter;
 
+    /**
+     * Initializing the game
+     * @param location unused
+     * @param resources unused
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Creating the board animation
         boardController = new BoardController();
         boardController.setPrefHeight(500);
         boardController.setPrefWidth(500);
         board.getChildren().add(0, boardController);
         
+        //Getting the link to the GUI adapter
         adapter = GUIAdapter.getInstance(true);
+        
+        //Setting this game controller as the adapter's game controller
         adapter.setController(this);
         
-        /*
-        boardController.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Point thePoint = boardController.calcMouseClick(event);
-                adapter.setPoint(thePoint);
-            }
-        });
-        */
+        
+//        boardController.setOnMouseClicked((MouseEvent event) -> {
+//            Point thePoint = boardController.calcMouseClick(event);
+//            adapter.setPoint(thePoint);
+//        });
+        
         
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 240 - 20;
@@ -83,29 +87,54 @@ public class GameController implements Initializable{
         
     }
     
+    /**
+     * Redrawing the board
+     * @param b the board to draw
+     */
     public void redraw(Board b) {
         boardController.draw(b);
     }
     
+    /**
+     * Updating the current player's text
+     * @param player the current player
+     */
     public void changeCurrentPlayer(String player) {
         currPlayerText.setText(player);
     }
     
+    /**
+     * Updating the white player's score
+     * @param score the new score
+     */
     public void changeWhitePlayerScore(String score) {
         whitePlayerScoreText.setText(score);
     }
     
+    /**
+     * Updating the black player's score
+     * @param score the new score
+     */
     public void changeBlackPlayerScore(String score) {
         blackPlayerScoreText.setText(score);
     }
     
+    /**
+     * Marking the options on the board
+     * @param options the move options
+     */
     public void markOptions(HashSet<Point> options) {
         boardController.markOptions(options);
     }
 
+    /**
+     * Returning to the main menu
+     * in the end of the game
+     */
     public void returnToMenu() {
         try {
-            FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("MenuFXML.fxml"));
+            //Loading the main menu
+            FXMLLoader menuLoader = new FXMLLoader(getClass().getClassLoader().getResource("reversi/gui/fxml/MenuFXML.fxml"));
             Parent menuParent = menuLoader.load();
             Scene menuScene = new Scene(menuParent);
             Stage theStage = (Stage) root.getScene().getWindow();

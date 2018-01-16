@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.game;
 
 /**
  * @author Ofek Segal and Natalie Elisha 
@@ -38,9 +33,9 @@ public enum Direction {
     }
     
     /**
-     * The function returns the next point to the given point
-     * according to the current direction
-     * @param point - a point
+     * The function returns the next point in the line
+     * of the current direction
+     * @param point a point
      * @return a point
      */
     public Point getPointFromDir(Point point) {

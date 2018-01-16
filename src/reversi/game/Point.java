@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.game;
 
 /**
  * @author Ofek Segal and Natalie Elisha 
@@ -25,8 +20,8 @@ public class Point {
     /**
      * The function creates a point according
      * to the given x and y rate
-     * @param x - x rate of the point
-     * @param y - y rate of the point
+     * @param x x rate of the point
+     * @param y y rate of the point
      */
     public Point(int x, int y) {
         _xLoc = x;
@@ -37,9 +32,9 @@ public class Point {
     /**
     * The function creates a point according
     * to the given x and y rate and a given PointType
-     * @param x - x rate of the point
-     * @param y - y rate of the point
-     * @param type - PointType instance
+     * @param x x rate of the point
+     * @param y y rate of the point
+     * @param type PointType instance
     */
     public Point(int x, int y, PointType type) {
         _xLoc = x;
@@ -50,7 +45,7 @@ public class Point {
     /**
     * The function creates an instance of a point
     * with the information of a given point
-     * @param p - a point
+     * @param p a point
     */
     public Point(Point p) {
         _xLoc = p._xLoc;
@@ -76,7 +71,7 @@ public class Point {
     
     /**
      * The function sets the x rate of the point
-     * @param x - new x location
+     * @param x new x location
      */
     public void setX(int x) {
         _xLoc = x;
@@ -84,7 +79,7 @@ public class Point {
     
     /**
      * The function sets the y rate of the point
-     * @param y - new x location
+     * @param y new x location
      */
     public void setY(int y) {
         _yLoc = y;
@@ -100,15 +95,15 @@ public class Point {
     
     /**
      * The function sets the PointType of the point
-     * @param type - the new PointType instance
+     * @param type the new PointType instance
      */
     public void setType(PointType type) {
         _type = type;
     }
     
     /**
-     * The function aligns the current point for
-     * being a part of a board that is playing a game
+     * The function aligns the current point to the
+     * [0,size-1] range
      */
     public void alignToBoard() {
         if (_type == PointType.Printable) {
@@ -119,8 +114,8 @@ public class Point {
     }
     
     /**
-     * The function aligns the current point for
-     * being a part of a board that is being printed
+     * The function aligns the current point to the
+     * [1,size] range (for console display)
      */
     public void alignToPrint() {
         if (_type == PointType.Board) {
@@ -129,12 +124,13 @@ public class Point {
             _type = PointType.Printable;
         }
     }
-    @Override
+    
     /**
-     * The function creates a toString object that
-     * represents the current point
-     * @return toString object
+     * The function creates return a String
+     * representation of the current point
+     * @return String the String representation
      */
+    @Override
     public String toString() {
         return "(" + _xLoc + "," + _yLoc + ")";
     }
@@ -142,7 +138,7 @@ public class Point {
     /**
      * The function checks if the given object is
      * equal to the current point
-     * @param o - an object
+     * @param o an object
      * @return true if equal, otherwise false
      */
     @Override
@@ -169,12 +165,16 @@ public class Point {
                this._yLoc == other._yLoc;
     }
 
-    @Override
+    
     /**
      * The function returns a hash code that
-     * represents the point's validation
+     * represents the point: X0YT
+     * X - the x rate
+     * Y - the y rate
+     * T - the type (0 for Board, 1 for Printable)
      * @return a hash code
      */
+    @Override
     public int hashCode() {
         String toBecomeHash = "";
         int tempX, tempY;

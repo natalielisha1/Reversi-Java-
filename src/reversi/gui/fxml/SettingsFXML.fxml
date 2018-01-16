@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="settings" prefHeight="656.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.fxml.SettingsFXMLController">
+<VBox fx:id="settings" prefHeight="656.0" prefWidth="596.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="reversi.gui.controllers.SettingsFXMLController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>

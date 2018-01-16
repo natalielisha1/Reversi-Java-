@@ -3,42 +3,60 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package reversi;
+package reversi.game.players;
 
+import reversi.game.Cell;
+import reversi.game.Game;
+import reversi.game.Point;
 import java.util.Arrays;
 import java.util.HashSet;
+import reversi.gui.GUIAdapter;
 
 /**
  * @author Ofek Segal and Natalie Elisha 
  */
 public class GUIPlayer implements Player{
-    private Cell _type;
-    private boolean _toPrint;
     
+    //The type of the player
+    private Cell _type;
+    
+    //If the game is GUI vs GUI, only one of them should print messages
+    private final boolean _toPrint;
+    
+    //A link to the GUI, without knowing exactly how the GUI works
     private final GUIAdapter _adapter;
     
     /**
      * Constructor for GUIPlayer object using a type
-     * of cell that bound to the player
-     * @param type - a type of cell
+     * of cell of the player
+     * @param type a type of cell
      */
     public GUIPlayer(Cell type) {
+        //Using the given type
         _type = type;
+        
+        //The default is to print messages
         _toPrint = true;
+        
+        //Getting the GUI link, and also activating the GUI functions
         _adapter = GUIAdapter.getInstance(true);
     }
     
     /**
      * Constructor for GUIPlayer object using a type
-     * of cell that bound to the player and a boolean
+     * of cell of the player and a boolean
      * value that says if the player should send a message
-     * to print for the alert
-     * @param type - a type of cell
-     * @param toPrint - a boolean value
+     * @param type a type of cell
+     * @param toPrint a boolean value
      */
     public GUIPlayer(Cell type, boolean toPrint) {
+        //Using the given type
         _type = type;
+        
+        //Using the given boolean
         _toPrint = toPrint;
+        
+        //Getting the GUI link, and also activating the GUI functions
         _adapter = GUIAdapter.getInstance(true);
     }
 
@@ -50,13 +68,15 @@ public class GUIPlayer implements Player{
      */
     @Override
     public Point makeMove(HashSet<Point> options) {
+        //If no move - print message (regardless of the _toPrint) and return
         if (options.isEmpty()) {
             _adapter.infoAlert("No Move Available!", "You don't have any move available, next player will now play");
             return Game.NO_MOVE_POINT;
         }
-        System.out.println("Options: " + Arrays.toString(options.toArray()));
+        //Getting the point
         Point currPoint = _adapter.requestPoint();
-        System.out.println(currPoint);
+        
+        //As long as the point is not available, retry
         while (!options.contains(currPoint) && !currPoint.equals(Game.NO_MOVE_POINT) &&
                !currPoint.equals(Game.END_GAME_POINT)) {
             _adapter.infoAlert("Ilegal Move!", "That move is not available to you, please choose a different option");

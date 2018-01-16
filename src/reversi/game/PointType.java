@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package reversi;
+package reversi.game;
 
 /**
  * @author Ofek Segal and Natalie Elisha 
@@ -13,8 +8,7 @@ public enum PointType {
     Printable;
     
     /**
-     * The function returns the reverse PointType
-     * to the current PointType
+     * The function returns the other PointType
      * @return reversed PointType
      */
     public PointType reverse() {

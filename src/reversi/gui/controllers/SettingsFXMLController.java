@@ -1,5 +1,6 @@
-package reversi.fxml;
+package reversi.gui.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 
 import java.util.ResourceBundle;
@@ -18,14 +19,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import reversi.Cell;
-import reversi.GameSettings;
-import reversi.ODiskColor;
-import reversi.XDiskColor;
+import reversi.game.Cell;
+import reversi.gui.GameSettings;
+import reversi.gui.ODiskColor;
+import reversi.gui.XDiskColor;
 
 /**
  *
- * @author ofek_and_natalie
+ * @author Ofek Segal & Natalie Elisha
  */
 public class SettingsFXMLController implements Initializable {
 	
@@ -55,8 +56,12 @@ public class SettingsFXMLController implements Initializable {
     @FXML
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        //Getting the settings object
         gameSettings = GameSettings.getInstance();
         
+        //Setting the options on the screen:
+        
+        //The starting player options
         startingPlayerChoice.setItems(FXCollections.observableArrayList("Black Player", "White Player"));
         switch (gameSettings.getStartingPlayer()) {
             case X:     startingPlayerChoice.getSelectionModel().select(0);
@@ -65,6 +70,7 @@ public class SettingsFXMLController implements Initializable {
                         break;
         }
         
+        //The white player's disk color options
         whitePlayerChoice.setItems(FXCollections.observableArrayList(ODiskColor.getStrings()));
         whitePlayerChoice.getSelectionModel().select(gameSettings.getOColor().ordinal());
         whitePlayerChoice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -73,8 +79,10 @@ public class SettingsFXMLController implements Initializable {
                 whitePlayerDiskImage.setImage(ODiskColor.getEnum(newValue).getDisk());
             }
         });
+        //The white player's disk color preview
         whitePlayerDiskImage.setImage(gameSettings.getOColor().getDisk());
         
+        //The black player's disk color options
         blackPlayerChoice.setItems(FXCollections.observableArrayList(XDiskColor.getStrings()));
         blackPlayerChoice.getSelectionModel().select(gameSettings.getXColor().ordinal());
         blackPlayerChoice.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -83,13 +91,17 @@ public class SettingsFXMLController implements Initializable {
                 blackPlayerDiskImage.setImage(XDiskColor.getEnum(newValue).getDisk());
             }
         });
+        //The black player's disk color options
         blackPlayerDiskImage.setImage(gameSettings.getXColor().getDisk());
         
+        
+        //The board size options
         ArrayList<String> availableBoardSizes = gameSettings.availableBoardSizes();
         
         boardSizeChoice.setItems(FXCollections.observableArrayList(availableBoardSizes));
         boardSizeChoice.getSelectionModel().select(gameSettings.getBoardSize() - 4);
         
+        //Making the saveBtn save the settings to the file, and return to the main menu
         saveBtn.setOnAction((event) -> {
             switch ((String)startingPlayerChoice.getValue()) {
                 case "Black Player":    gameSettings.setStartingPlayer(Cell.X);
@@ -107,12 +119,13 @@ public class SettingsFXMLController implements Initializable {
 
     private void returnToMenu() {
         try {
-            FXMLLoader menuLoader = new FXMLLoader(getClass().getResource("MenuFXML.fxml"));
+            //Loading the menu
+            FXMLLoader menuLoader = new FXMLLoader(getClass().getClassLoader().getResource("reversi/gui/fxml/MenuFXML.fxml"));
             Parent menuParent = menuLoader.load();
             Scene menuScene = new Scene(menuParent);
             Stage theStage = (Stage) saveBtn.getScene().getWindow();
             theStage.setScene(menuScene);
-        }   catch (Exception ex) {
+        }   catch (IOException ex) {
             //Weird Error - if happens -> debug
             System.out.println("ChangeSettings error:");
             ex.printStackTrace();
