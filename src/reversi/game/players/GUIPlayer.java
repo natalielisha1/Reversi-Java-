@@ -81,7 +81,6 @@ public class GUIPlayer implements Player{
                !currPoint.equals(Game.END_GAME_POINT)) {
             _adapter.infoAlert("Ilegal Move!", "That move is not available to you, please choose a different option");
             currPoint = _adapter.requestPoint();
-            System.out.println(currPoint);
         }
         return currPoint;
     }

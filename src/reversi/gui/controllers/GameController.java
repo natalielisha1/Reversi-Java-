@@ -69,10 +69,10 @@ public class GameController implements Initializable{
         adapter.setController(this);
         
         
-//        boardController.setOnMouseClicked((MouseEvent event) -> {
-//            Point thePoint = boardController.calcMouseClick(event);
-//            adapter.setPoint(thePoint);
-//        });
+        boardController.setOnMouseClicked((MouseEvent event) -> {
+            Point thePoint = boardController.calcMouseClick(event);
+            adapter.setPoint(thePoint);
+        });
         
         
         root.widthProperty().addListener((observable, oldValue, newValue) -> {

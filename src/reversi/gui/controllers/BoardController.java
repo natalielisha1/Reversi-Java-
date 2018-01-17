@@ -80,11 +80,11 @@ public class BoardController extends GridPane {
                 theCells[i][j].fitHeightProperty().bind(this.prefHeightProperty().divide(theSize));
                 theCells[i][j].fitWidthProperty().bind(this.prefWidthProperty().divide(theSize));
                 
-                //Setting a "OnMouseClicked" event to each cell
-                theCells[i][j].setOnMouseClicked((MouseEvent event) -> {
-                    Point newPoint = new Point(row, col, PointType.Board);
-                    adapter.setPoint(newPoint);
-                });
+//                //Setting a "OnMouseClicked" event to each cell
+//                theCells[i][j].setOnMouseClicked((MouseEvent event) -> {
+//                    Point newPoint = new Point(row, col, PointType.Board);
+//                    adapter.setPoint(newPoint);
+//                });
                 this.add(theCells[i][j], j, i);
             }
         }
@@ -150,25 +150,25 @@ public class BoardController extends GridPane {
         double mouseX = event.getSceneX();
         double mouseY = event.getSceneY();
         
-        Bounds boundsInScence = this.localToScene(this.getBoundsInLocal());
-        
-        int height = (int) boundsInScence.getHeight();
-        int width = (int) boundsInScence.getWidth();
+        int height = (int) this.getPrefHeight();
+        int width = (int) this.getPrefWidth();
         
         int cellHeight = height / theSize;
         int cellWidth = width / theSize;
         
-        double row = mouseX - boundsInScence.getMinX();
-        row /= cellWidth;
+        Bounds boundsInScence = this.localToScene(this.getBoundsInLocal());
+        
+        double row = mouseY - boundsInScence.getMinY();
+        row /= cellHeight;
         row = Math.abs(row);
-        
-        int intRow = (int) Math.ceil(row);
-        
-        double col = mouseY - boundsInScence.getMinY();
-        col /= cellHeight;
+
+        int intRow = (int) Math.ceil(row) - 1;
+
+        double col = mouseX - boundsInScence.getMinX();
+        col /= cellWidth;
         col = Math.abs(col);
-        
-        int intCol = (int) Math.ceil(col) - 2;
+
+        int intCol = (int) Math.ceil(col) - 1;
         
         return new Point(intRow, intCol, PointType.Board);
     }
