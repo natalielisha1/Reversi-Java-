@@ -12,9 +12,9 @@ import java.util.HashSet;
 import java.util.concurrent.Semaphore;
 
 import reversi.gui.controllers.GameController;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class GUIAdapter {
     //The Singleton instance

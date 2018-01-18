@@ -11,9 +11,9 @@ import reversi.game.Point;
 import java.util.Arrays;
 import java.util.HashSet;
 import reversi.gui.GUIAdapter;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class GUIPlayer implements Player{
     

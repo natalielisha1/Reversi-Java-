@@ -16,10 +16,9 @@ import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 
 import java.util.HashSet;
-
 /**
- *
- * @author Ofek Segal and Natalie Elisha
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class BoardController extends GridPane {
     //The game settings

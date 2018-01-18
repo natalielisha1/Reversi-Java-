@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import reversi.gui.GUIAdapter;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class ReversiLogic implements GameLogic {
     

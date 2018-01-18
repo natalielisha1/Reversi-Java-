@@ -6,9 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class GameSettings {
     //The Singleton instance

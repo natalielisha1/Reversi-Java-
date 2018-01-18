@@ -24,10 +24,9 @@ import javafx.stage.Stage;
 import reversi.game.Board;
 import reversi.gui.GUIAdapter;
 import reversi.game.Point;
-
 /**
- *
- * @author Ofek Segal and Natalie Elisha
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class GameController implements Initializable{
     @FXML

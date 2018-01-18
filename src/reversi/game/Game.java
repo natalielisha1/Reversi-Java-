@@ -6,9 +6,9 @@ import reversi.gui.GUIAdapter;
 import reversi.game.players.GUIPlayer;
 import reversi.gui.GameSettings;
 import reversi.game.players.Player;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class Game {
     //Player type identifiers

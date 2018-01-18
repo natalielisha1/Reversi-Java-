@@ -1,7 +1,7 @@
 package reversi.game;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public enum Cell {
     Empty,

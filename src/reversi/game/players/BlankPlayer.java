@@ -7,9 +7,9 @@ package reversi.game.players;
 import reversi.game.Cell;
 import reversi.game.Point;
 import java.util.HashSet;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class BlankPlayer implements Player{
     private Cell _type;

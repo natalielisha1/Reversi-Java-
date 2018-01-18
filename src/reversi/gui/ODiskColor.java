@@ -2,9 +2,9 @@ package reversi.gui;
 
 import java.util.ArrayList;
 import javafx.scene.image.Image;
-
 /**
- * @author Ofek Segal and Natalie Elisha 
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public enum ODiskColor {
     White {

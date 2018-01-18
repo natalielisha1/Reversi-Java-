@@ -23,10 +23,9 @@ import reversi.game.Cell;
 import reversi.gui.GameSettings;
 import reversi.gui.ODiskColor;
 import reversi.gui.XDiskColor;
-
 /**
- *
- * @author Ofek Segal & Natalie Elisha
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
  */
 public class SettingsFXMLController implements Initializable {
 	

@@ -1,5 +1,8 @@
 package reversi.gui;
-
+/**
+ * Names: Natalie Elisha and Ofek Segal.
+ * IDs: 209475458, 315638288
+ */
 /*
  * In this project we have used several images,
  * and here is the list of credits (in name: site format):
