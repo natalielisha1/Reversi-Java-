@@ -79,11 +79,6 @@ public class BoardController extends GridPane {
                 theCells[i][j].fitHeightProperty().bind(this.prefHeightProperty().divide(theSize));
                 theCells[i][j].fitWidthProperty().bind(this.prefWidthProperty().divide(theSize));
                 
-//                //Setting a "OnMouseClicked" event to each cell
-//                theCells[i][j].setOnMouseClicked((MouseEvent event) -> {
-//                    Point newPoint = new Point(row, col, PointType.Board);
-//                    adapter.setPoint(newPoint);
-//                });
                 this.add(theCells[i][j], j, i);
             }
         }

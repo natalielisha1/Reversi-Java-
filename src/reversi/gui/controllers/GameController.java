@@ -67,13 +67,13 @@ public class GameController implements Initializable{
         //Setting this game controller as the adapter's game controller
         adapter.setController(this);
         
-        
+        //Setting the mouse press listener
         boardController.setOnMouseClicked((MouseEvent event) -> {
             Point thePoint = boardController.calcMouseClick(event);
             adapter.setPoint(thePoint);
         });
         
-        
+        //Setting the resize listeners
         root.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue() - 240 - 20;
             boardController.setPrefWidth(boardNewWidth);
