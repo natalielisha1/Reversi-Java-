@@ -1,6 +1,6 @@
 This repo hosted the Advanced Programming 1 course project - A reversi game in Java (JavaFX 8)
 
-This project is a collaboration with Natalie Elisha.
+This project is a collaboration with Natalie Elisha (@natalielisha1).
 
 In the game, we have used several images, and the credits go out to:
 (Credits are in "Image: site" form)
